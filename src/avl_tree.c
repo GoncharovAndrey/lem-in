@@ -14,65 +14,66 @@
 
 int				avl_insert(avl_tree *tree, avl_node *new_node)
 {
-	avl_node	**v, *w, *x, *y, *z;
-	int			side;
+	avl_node ** v, *w, *x, *y, *z;
 
 /* если в дереве еще нет узлов */
 	v = &tree->root;
 	x = z = tree->root;
 	if(x == NULL)
 	{
-//		ft_printf("tut\n");
 		tree->root = new_node;
-		return (1);
+		tree->count++;
+		return 1;
 //		return tree->root != NULL;
 	}
+
 /* фрагмент №1 */
 /* поиск подходящей позиции и последующая вставка элемента */
-	while(z)
+	for(;;)
 	{
+		int dir;
 		/* такой элемент уже есть в дереве – функцию можно завершить */
-		if(!(side = ft_strcmp(z->name_room, new_node->name_room)))
+		if(!(dir = ft_strcmp(new_node->name_room, z->name_room)) /* item == z->data*/)
 			return 2;
-		side = (side < 0);
-		y = z->link[side];
+		dir = (dir > 0 /*item > z->data*/) ;
+		y = z->link[dir];
 		if(y == NULL)
 		{
-			y = z->link[side] = new_node;
+			y = z->link[dir] = new_node;
 			tree->count++;
-//			if(y == NULL)
-//				return 0;
+			if(y == NULL)
+				return 0;
 			break;
 		}
 		if(y->bal != 0)
 		{
-			v = &z->link[side];
+			v = &z->link[dir];
 			x = y;
 		}
 		z = y;
 	}
+
 /* фрагмент №2 */
 /* пересчет коэффициентов сбалансированности для узлов, затронутых вставкой */
-	w = z = x->link[ft_strcmp(x->name_room, new_node->name_room) < 0];
+	w = z = x->link[ft_strcmp(new_node->name_room, x->name_room) > 0 /*item > x->data*/];
 	while(z != y)
-	{
-		if(ft_strcmp(z->name_room, new_node->name_room) > 0)
+		if(ft_strcmp(new_node->name_room, z->name_room) < 0   /*item < z->data*/)
 		{
 			z->bal = -1;
 			z = z->link[0];
 		}
 		else
 		{
-			z->bal = 1;
+			z->bal   =   +1;
 			z = z->link[1];
 		}
-	}
+
 /* фрагмент № 3 */
 /* балансировка при добавлении нового узла в левое поддерево */
-	if(ft_strcmp(x->name_room, new_node->name_room) > 0)
+	if(ft_strcmp(new_node->name_room, x->name_room) < 0 /*item < x->data*/)
 	{
 		if (x->bal != -1)
-			x->bal--;
+			x->bal --;
 		else if(w->bal == -1)
 		{
 			*v=w;

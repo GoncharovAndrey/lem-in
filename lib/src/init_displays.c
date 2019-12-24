@@ -41,9 +41,7 @@ int		initialze_display_f(t_printf *list, long double n,
 		int *len_num, char **str)
 {
 	int len;
-	int i;
 
-	i = 0;
 	(list->precision == 0) ? list->precision_space = 6 : 0;
 	(list->precision == 0) ? list->precision = 1 : 0;
 	list->precision_space == 10 ? n = (double)n : 0;

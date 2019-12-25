@@ -22,6 +22,7 @@ typedef struct			s_avl_node
 	short int			bal;
 	char				*str;
 	char				**name_room;
+	struct s_list_link	*link_room;
 //	str					*x;
 //	str					*y;
 }						avl_node;
@@ -35,7 +36,15 @@ typedef struct			s_avl_tree
 	avl_node			*end;
 }						avl_tree;
 
-int				read_map(avl_node *tree, avl_tree *root);
+typedef struct			s_list_link
+{
+	avl_node			*data;
+	struct s_list_link	*next;
+}						list_link;
+
+int				read_map(avl_node *tree, avl_tree *root, char **link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
+int				ft_add_list(avl_node *data, avl_node *room);
+void			ft_delete_list(list_link *head);
 
 #endif

@@ -17,14 +17,15 @@ int		main()
 {
 	avl_node	*tree;
 	avl_tree	root;
-	char		*line;
+	char		**link;
 	int			i;
 
 	i = 0;
 	tree = (avl_node*)malloc(sizeof(avl_node) * 40000);
+	link = (char**)malloc(sizeof(char*) * 40000);
 	root.root = NULL;
 	root.count = 0;
-	read_map(tree, &root);
+	read_map(tree, &root, link);
 //	while (get_next_line(STDIN_FILENO, &tree[i].str))
 //	{
 //		tree[i].name_room = ft_strsplit(tree[i].str, 32);
@@ -49,7 +50,6 @@ int		main()
 //		printf("\n");
 //		i++;
 //	}
-	printf("%s , %d\n", root.root->name_room[0], root.count);
 	i = 0;
 	avl_node *tmp;
 	tmp = root.root;
@@ -75,13 +75,38 @@ int		main()
 	i = 0;
 	while (tree[i].str)
 		ft_putendl(tree[i++].str);
+	i = 0;
+	while (link[i])
+		ft_putendl(link[i++]);
 	printf("%d   start - %s , end - %s \n", root.ant, root.start->name_room[0], root.end->name_room[0]);
+	printf("count - %d\n", root.count);
+
+
+	list_link	*tmp2;
+
+	tmp2 = tree[1378].link_room;
+	printf("%s - ", tree[1378].name_room[0]);
+	while (tmp2)
+	{
+		printf("  {%s}  ", tmp2->data->name_room[0]);
+		tmp2 = tmp2->next;
+	}
+	printf("\n");
+
 	i = 0;
 	while(i < root.count + 2)
 	{
 		free(tree[i].name_room);
+		ft_delete_list(tree[i].link_room);
+		i++;
+	}
+	i = 0;
+	while(i < root.count + 2)
+	{
+		free(link[i]);
 		i++;
 	}
 	free(tree);
+	free(link);
 	return 0;
 }

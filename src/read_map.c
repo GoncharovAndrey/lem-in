@@ -67,6 +67,8 @@ int				read_map(avl_node *tree, avl_tree *root, char **link)
 		tree->link[0] = NULL;
 		tree->link[1] = NULL;
 		tree->bal = 0;
+		tree->level = 0;
+		tree->link_room = NULL;
 		avl_insert(root, tree);
 		tree++;
 	}

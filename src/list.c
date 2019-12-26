@@ -19,6 +19,7 @@ list_link		*ft_create_list(avl_node *data)
 	node = (list_link*)malloc(sizeof(list_link));
 	node->data = data;
 	node->next = NULL;
+	node->incld_in_way = 0;
 	return node;
 }
 

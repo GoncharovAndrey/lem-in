@@ -19,6 +19,7 @@ int		main()
 	avl_tree	root;
 	char		**link;
 	int			i;
+	avl_node	***ways;
 
 	i = 0;
 	tree = (avl_node*)malloc(sizeof(avl_node) * 40000);
@@ -26,6 +27,8 @@ int		main()
 	root.root = NULL;
 	root.count = 0;
 	read_map(tree, &root, link);
+	bfs(&root);
+	ways = pave_the_way(&root);
 //	while (get_next_line(STDIN_FILENO, &tree[i].str))
 //	{
 //		tree[i].name_room = ft_strsplit(tree[i].str, 32);
@@ -53,46 +56,53 @@ int		main()
 	i = 0;
 	avl_node *tmp;
 	tmp = root.root;
-	int side;
-	int level;
-	while (i < root.count)
-	{
-		tmp = root.root;
-		level = 0;
-		while (tmp)
-		{
-			if (!(side = ft_strcmp(tree[i].name_room[0], tmp->name_room[0])))
-		{
-//			printf("%s  {%d level}\n", tmp->name_room, level);
-			break;
-		}
-			side = (side > 0);
-			tmp = tmp->link[side];
-			level++;
-		}
-		i++;
-	}
-	i = 0;
-	while (tree[i].str)
-		ft_putendl(tree[i++].str);
-	i = 0;
-	while (link[i])
-		ft_putendl(link[i++]);
-	printf("%d   start - %s , end - %s \n", root.ant, root.start->name_room[0], root.end->name_room[0]);
-	printf("count - %d\n", root.count);
 
 
+	/*  pechyat karty  */
+//	i = 0;
+//	while (tree[i].str)
+//		ft_putendl(tree[i++].str);
+//	i = 0;
+//	while (link[i])
+//		ft_putendl(link[i++]);
+//	printf("%d   start - %s , end - %s \n", root.ant, root.start->name_room[0], root.end->name_room[0]);
+//	printf("count - %d\n", root.count);
+/*                        */
+
+
+
+
+
+/*   prosmotr svyazey   */
 	list_link	*tmp2;
 
-	tmp2 = tree[1378].link_room;
-	printf("%s - ", tree[1378].name_room[0]);
+	tmp2 = tree[3].link_room;
+	printf("%s - ", tree[3].name_room[0]);
 	while (tmp2)
 	{
-		printf("  {%s}  ", tmp2->data->name_room[0]);
+		printf("  {%s l-%d}  ", tmp2->data->name_room[0], tmp2->data->level);
 		tmp2 = tmp2->next;
 	}
 	printf("\n");
+/*                                 */
 
+	int x = 0;
+	int y = 0;
+	while(ways[x])
+	{
+		y = 0;
+		while (ways[i][y])
+		{
+			printf("%s   ", ways[x][y]->name_room[0]);
+			y++;
+		}
+		printf("\n");
+		x++;
+	}
+
+
+
+/*      фришим всю память */
 	i = 0;
 	while(i < root.count + 2)
 	{
@@ -108,5 +118,6 @@ int		main()
 	}
 	free(tree);
 	free(link);
+/*          !!!!!!!!!!!!!             */
 	return 0;
 }

@@ -14,17 +14,18 @@
 #define LEM_IN_H
 
 # include "../lib/includes/ft_printf.h"
-
+#include <stdio.h>
 
 typedef struct			s_avl_node
 {
+	/*  если что проверить вынести дерево отдельно , и хранить в дата указатель на комнату*/
 	struct s_avl_node	*link[2];
 	short int			bal;
+	/*        еще проверить сначало все считать потом формитровать дерево                 */
 	char				*str;
 	char				**name_room;
 	struct s_list_link	*link_room;
-//	str					*x;
-//	str					*y;
+	int					level;
 }						avl_node;
 
 typedef struct			s_avl_tree
@@ -39,6 +40,8 @@ typedef struct			s_avl_tree
 typedef struct			s_list_link
 {
 	avl_node			*data;
+//	int					side;
+	int					incld_in_way;
 	struct s_list_link	*next;
 }						list_link;
 
@@ -46,5 +49,7 @@ int				read_map(avl_node *tree, avl_tree *root, char **link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
 int				ft_add_list(avl_node *data, avl_node *room);
 void			ft_delete_list(list_link *head);
+void			bfs(avl_tree *root);
+avl_node		***pave_the_way(avl_tree *root);
 
 #endif

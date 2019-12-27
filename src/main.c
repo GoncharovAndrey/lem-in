@@ -91,7 +91,8 @@ int		main()
 	while(ways[x])
 	{
 		y = 0;
-		while (ways[i][y])
+		printf("%p\n", ways[x]);
+		while (ways[x] && ways[x][y])
 		{
 			printf("%s   ", ways[x][y]->name_room[0]);
 			y++;
@@ -100,6 +101,16 @@ int		main()
 		x++;
 	}
 
+
+
+//	list_link *ltmp;
+//	ltmp = tree[4].link_room;
+//	printf("%s   ", tree[4].name_room[0]);
+//	while (ltmp)
+//	{
+//		printf("%d  ", ltmp->incld_in_way);
+//		ltmp = ltmp->next;
+//	}
 
 
 /*      фришим всю память */

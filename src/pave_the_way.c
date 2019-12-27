@@ -31,45 +31,61 @@ avl_node		***pave_the_way(avl_tree *root)
 		size++;
 		tmp = tmp->next;
 	}
-	ways = (avl_node***)malloc(sizeof(avl_node**) * size);
-	ft_memset(ways, 0, sizeof(avl_node**) * size);
+
+	int 	z = size + 1;
+	ways = (avl_node***)malloc(sizeof(avl_node**) * size + 1);
+	while (z--  >= 0)
+		ways[z] = NULL;
+
+
+//	ft_memset(ways, 0, sizeof(avl_node**) * size);
+//	printf("%d size\n", size);
 	tmp = root->end->link_room;
 	while (0 < size)
 	{
+//		printf("tut\n");
 		tmp = root->end->link_room;
 		short_way = NULL;
-		while (tmp && (!tmp->data->level || tmp->incld_in_way))
+		while (tmp && (tmp->data->level == 0 || tmp->incld_in_way || tmp->data->locked == 1))
 			tmp = tmp->next;
 		if (tmp)
+		{
 			short_way = tmp;
+		}
 		while (tmp)
 		{
-			if (short_way->data->level > tmp->data->level && !tmp->incld_in_way)
+			if (short_way->data->level > tmp->data->level && tmp->data->level && !tmp->incld_in_way && !tmp->data->locked)
 				short_way = tmp;
 			tmp = tmp->next;
 		}
 		if (short_way)
 		{
+			printf("%s \n", short_way->data->name_room[0]);
 			y = 0;
 			ways[i] = (avl_node**)malloc(sizeof(avl_node*) * short_way->data->level + 1);
 			ft_memset(ways[i], 0, sizeof(avl_node*) * short_way->data->level + 1);
-			tmp_an = root->end;
-			ways[i][y++] = tmp_an;
-			while (short_way->data != root->start)
+			printf("%p insert\n", ways[i]);
+			ways[i][y++] = root->end;
+			short_way->incld_in_way = 1;
+			tmp_an = short_way->data;
+			while (tmp_an != root->start)
 			{
-				short_way->incld_in_way = 1;
-				tmp_an = short_way->data;
+				tmp_an->locked = 1;
+				ways[i][y++] = tmp_an;
 				short_way = tmp_an->link_room;
-				while (short_way && (short_way->data->level >= tmp_an->level || short_way->data->level == 0 || short_way->incld_in_way == 1))
+				while (short_way && (short_way->data->level >= tmp_an->level || short_way->data->level == 0 || short_way->incld_in_way == 1 || short_way->data->locked == 1))
 					short_way = short_way->next;
 				if (!short_way)
 				{
-					free(ways[i]);
+					printf("%p free\n", ways[i]);
+					/* сега когда использую фри*/
+//					free(ways[i]);
 					ways[i] = NULL;
-					i--;
+//					i--;
 					break;
 				}
-				ways[i][y++] = tmp_an;
+				short_way->incld_in_way = 1;
+				tmp_an = short_way->data;
 			}
 			i++;
 		}

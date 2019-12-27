@@ -26,6 +26,7 @@ typedef struct			s_avl_node
 	char				**name_room;
 	struct s_list_link	*link_room;
 	int					level;
+	int					locked;
 }						avl_node;
 
 typedef struct			s_avl_tree

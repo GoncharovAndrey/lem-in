@@ -38,19 +38,26 @@ typedef struct			s_avl_tree
 	avl_node			*end;
 }						avl_tree;
 
+typedef struct			s_link
+{
+	char				*str;
+	avl_node			*link_arr[2];
+	int					incld_in_way;
+	int					status;
+}						t_link;
+
 typedef struct			s_list_link
 {
-	avl_node			*data;
+	struct s_link		*data;
 //	int					side;
-	int					incld_in_way;
 	struct s_list_link	*next;
 }						list_link;
 
-int				read_map(avl_node *tree, avl_tree *root, char **link);
+int				read_map(avl_node *tree, avl_tree *root, t_link *link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
-int				ft_add_list(avl_node *data, avl_node *room);
+int				ft_add_list(avl_node *room, t_link *data);
 void			ft_delete_list(list_link *head);
 void			bfs(avl_tree *root);
-avl_node		***pave_the_way(avl_tree *root);
+//avl_node		***pave_the_way(avl_tree *root);
 
 #endif

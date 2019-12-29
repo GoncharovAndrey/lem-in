@@ -35,14 +35,27 @@ void			bfs(avl_tree *root)
 		{
 			while (tmp)
 			{
-				if (tmp->data != root->end)
+				if (tmp->data->link_arr[0] == turn[next] && tmp->data->status == -1)
 				{
-					if (!tmp->data->level)
+					tmp->data->link_arr[0] = tmp->data->link_arr[1];
+					tmp->data->link_arr[1] = turn[next];
+				}
+				if (tmp->data->link_arr[0] != root->end)
+				{
+					if (!tmp->data->link_arr[0]->level)
 					{
-						tmp->data->level = level;
-						turn[++end] = tmp->data;
+						tmp->data->link_arr[0]->level = level;
+						turn[++end] = tmp->data->link_arr[0];
 					}
 				}
+				else
+				{
+					tmp->data->status = 0;
+					free(turn);
+					return;
+				}
+				if (tmp->data->link_arr[0]->level > tmp->data->link_arr[1]->level)
+					tmp->data->status = 0;
 				tmp = tmp->next;
 			}
 		}

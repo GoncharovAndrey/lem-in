@@ -47,7 +47,7 @@ int				ft_check_map(avl_node **tree, avl_tree *root)
 	return 1;
 }
 
-int				read_map(avl_node *tree, avl_tree *root, char **link)
+int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 {
 	char		*str;
 	int			opr;
@@ -73,21 +73,23 @@ int				read_map(avl_node *tree, avl_tree *root, char **link)
 		avl_insert(root, tree);
 		tree++;
 	}
-	*link = tree->str;
+	link->str = tree->str;
 	tree->str = NULL;
-	link_room = ft_strsplit(*link, '-');
-	tmp[0] = ft_find_room(link_room[0], root->root);
-	tmp[1] = ft_find_room(link_room[1], root->root);
-	ft_add_list(tmp[1], tmp[0]);
-	ft_add_list(tmp[0], tmp[1]);
+	link_room = ft_strsplit(link->str, '-');
+	link->link_arr[0] = ft_find_room(link_room[0], root->root);
+	link->link_arr[1] = ft_find_room(link_room[1], root->root);
+	link->status = -1;
+	ft_add_list(link->link_arr[0], link);
+	ft_add_list(link->link_arr[1], link);
 	link++;
-	while (get_next_line(STDIN_FILENO, link))
+	while (get_next_line(STDIN_FILENO, &link->str))
 	{
-		link_room = ft_strsplit(*link, '-');
-		tmp[0] = ft_find_room(link_room[0], root->root);
-		tmp[1] = ft_find_room(link_room[1], root->root);
-		ft_add_list(tmp[1], tmp[0]);
-		ft_add_list(tmp[0], tmp[1]);
+		link_room = ft_strsplit(link->str, '-');
+		link->link_arr[0] = ft_find_room(link_room[0], root->root);
+		link->link_arr[1] = ft_find_room(link_room[1], root->root);
+		link->status = -1;
+		ft_add_list(link->link_arr[0], link);
+		ft_add_list(link->link_arr[1], link);
 		/*надо будет вришить  link_room!!!!*/
 		free(link_room[0]);
 		free(link_room[1]);
@@ -95,6 +97,6 @@ int				read_map(avl_node *tree, avl_tree *root, char **link)
 		/* !!!!!!!!!!!!!!!!!!! */
 		link++;
 	}
-	link = NULL;
+	link->str = NULL;
 	return 1;
 }

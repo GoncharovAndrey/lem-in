@@ -12,14 +12,14 @@
 
 #include "../includes/lem_in.h"
 
-list_link		*ft_create_list(avl_node *data)
+list_link		*ft_create_list(t_link *data)
 {
 	list_link	*node;
 
 	node = (list_link*)malloc(sizeof(list_link));
 	node->data = data;
 	node->next = NULL;
-	node->incld_in_way = 0;
+	data->incld_in_way = 0;
 	return node;
 }
 
@@ -36,7 +36,7 @@ void			ft_delete_list(list_link *head)
 	}
 }
 
-int				ft_add_list(avl_node *data, avl_node *room)
+int				ft_add_list(avl_node *room, t_link *data)
 {
 	list_link	*node;
 

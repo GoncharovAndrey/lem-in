@@ -78,7 +78,8 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 	link_room = ft_strsplit(link->str, '-');
 	link->link_arr[0] = ft_find_room(link_room[0], root->root);
 	link->link_arr[1] = ft_find_room(link_room[1], root->root);
-	link->status = -1;
+	link->status = 0;
+	link->incld_in_way = 0;
 	ft_add_list(link->link_arr[0], link);
 	ft_add_list(link->link_arr[1], link);
 	link++;
@@ -87,7 +88,8 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 		link_room = ft_strsplit(link->str, '-');
 		link->link_arr[0] = ft_find_room(link_room[0], root->root);
 		link->link_arr[1] = ft_find_room(link_room[1], root->root);
-		link->status = -1;
+		link->status = 0;
+		link->incld_in_way = 0;
 		ft_add_list(link->link_arr[0], link);
 		ft_add_list(link->link_arr[1], link);
 		/*надо будет вришить  link_room!!!!*/

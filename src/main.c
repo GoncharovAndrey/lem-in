@@ -19,15 +19,34 @@ int		main()
 	avl_tree	root;
 	t_link		*link;
 	int			i;
-	avl_node	***ways;
+	list_link	*ways;
 
 	i = 0;
 	tree = (avl_node*)malloc(sizeof(avl_node) * 40000);
 	link = (t_link*)malloc(sizeof(t_link) * 40000);
 	root.root = NULL;
 	root.count = 0;
+	root.st = 0;
 	read_map(tree, &root, link);
-	bfs(&root);
+//	bfs(&root);
+//	ways = pave_the_way(&root);
+//	ways = pave_the_way(&root);
+	while (bfs(&root))
+	{
+		i = 0;
+		while (link[i].str)
+		{
+			printf("[%d] %s   {%s -  %s}\n", link[i].status, link[i].str, link[i].link_arr[0]->name_room[0], link[i].link_arr[1]->name_room[0]);
+			i++;
+		}
+		ways = pave_the_way(&root);
+		while (ways)
+		{
+			ways->data->incld_in_way = 1;
+			ways = ways->next;
+		}
+		printf("krug\n");
+	}
 //	ways = pave_the_way(&root);
 ////	while (get_next_line(STDIN_FILENO, &tree[i].str))
 ////	{
@@ -81,13 +100,20 @@ int		main()
 	while (tmp2)
 	{
 		printf("  {%s - %s }  ", tmp2->data->link_arr[0]->name_room[0], tmp2->data->link_arr[1]->name_room[0]);
-		if (tmp2->data->status == 0)
+		if (tmp2->data->status == root.st)
 			printf("\nstatus 0  level %d \n" , tmp2->data->link_arr[1]->level);
 		tmp2 = tmp2->next;
 	}
 	printf("\n");
 ///*                                 */
-//
+
+	i = 0;
+	while (link[i].str)
+	{
+		printf("[%d] %s   {%s -  %s}\n", link[i].status, link[i].str, link[i].link_arr[0]->name_room[0], link[i].link_arr[1]->name_room[0]);
+		i++;
+	}
+
 //	int x = 0;
 //	int y = 0;
 //	while(ways[x])

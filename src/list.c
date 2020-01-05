@@ -19,7 +19,6 @@ list_link		*ft_create_list(t_link *data)
 	node = (list_link*)malloc(sizeof(list_link));
 	node->data = data;
 	node->next = NULL;
-//	data->incld_in_way = 0;
 	return node;
 }
 

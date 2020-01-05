@@ -13,15 +13,16 @@
 #include "../includes/lem_in.h"
 #include <stdio.h>
 
-void			ft_delete_incld_way(list_link **ways)
+void			ft_delete_incld_way(t_ways *ways)
 {
 	int			i;
 	list_link	*tmp;
 
 	i = 0;
-	while (ways[i])
+	while (ways[i].head)
 	{
-		tmp = ways[i];
+		tmp = ways[i].head;
+		ways[i].head = NULL;
 		while (tmp)
 		{
 			if (tmp->data->incld_in_way != -1)
@@ -32,6 +33,32 @@ void			ft_delete_incld_way(list_link **ways)
 	}
 }
 
+t_ways			*ft_init_ways(avl_tree *root)
+{
+	t_ways		*ways;
+	int			i;
+	int			y;
+	list_link	*tmp;
+
+	i = 0;
+	y = 0;
+	tmp = root->end->link_room;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	ways = (t_ways*)malloc(sizeof(t_ways) * (++i));
+	while (y < i)
+	{
+		ways[y].status = 0;
+		ways[y].steps = 0;
+		ways[y].head =NULL;
+		y++;
+	}
+	return (ways);
+}
+
 int		main()
 {
 	avl_node	*tree;
@@ -40,7 +67,7 @@ int		main()
 	int			i;
 	int			l;
 	int			s;
-	list_link	*ways[100][100] = {NULL};
+	t_ways		*ways;
 	list_link	*tmpw;
 
 	i = 0;
@@ -52,27 +79,23 @@ int		main()
 	root.count = 0;
 	root.st = 0;
 	read_map(tree, &root, link);
-//	bfs(&root);
-//	ways = pave_the_way(&root);
-//	ways = pave_the_way(&root);
+	ways = ft_init_ways(&root);
 	while (bfs(&root))
 	{
-		i = 0;
 //		while (link[i].str)
 //		{
 //			printf("[%d] %s   {%s -  %s}\n", link[i].status, link[i].str, link[i].link_arr[0]->name_room[0], link[i].link_arr[1]->name_room[0]);
 //			i++;
 //		}
-		ways[s][l] = pave_the_way(&root);
-		tmpw = ways[s][l];
+		ways[l].head = pave_the_way(&root);
+		tmpw = ways[l].head;
 		while (tmpw)
 		{
 			if (tmpw->data->incld_in_way != -1)
 				tmpw->data->incld_in_way = 1;
 			else
 			{
-				ft_delete_incld_way(ways[s]);
-				s++;
+				ft_delete_incld_way(ways);
 				l = -1;
 				break;
 			}
@@ -82,11 +105,26 @@ int		main()
 		l++;
 //		printf("krug\n");
 	}
+	ft_delete_incld_way(ways);
 	l = 0;
-	while (ways[s][l])
+	while (bfs(&root))
 	{
-		tmpw = ways[s][l];
-//		printf("%d\n", l);
+		ways[l].head = pave_the_way_finish(&root);
+		tmpw = ways[l].head;
+		while (tmpw)
+		{
+			tmpw->data->incld_in_way = 1;
+			tmpw = tmpw->next;
+		}
+		l++;
+	}
+
+
+	l = 0;
+	while (ways[l].head)
+	{
+		tmpw = ways[l].head;
+//		printf("     begin ----  %d\n", l);
 		i = 0;
 		while (tmpw)
 		{
@@ -94,102 +132,36 @@ int		main()
 			tmpw = tmpw->next;
 			i++;
 		}
-		printf("%d\n", i);
+		ways[l].steps = i;
+//		printf(" ---- steps %d   ---\n\n", ways[l].steps);
 		l++;
 	}
-//	ways = pave_the_way(&root);
-////	while (get_next_line(STDIN_FILENO, &tree[i].str))
-////	{
-////		tree[i].name_room = ft_strsplit(tree[i].str, 32);
-////		tree[i].link[0] = NULL;
-////		tree[i].link[1] = NULL;
-////		tree[i].bal = 0;
-////		avl_insert(&root, &tree[i]);
-////		i++;
-////	}
-////	i = 0;
-////	avl_node *left;
-////	avl_node *right;
-////	while (i < 99)
-////	{
-////		printf ("%s - ", tree[i].name_room);
-////		left = tree[i].link[0];
-////		right = tree[i].link[1];
-////		if (left != NULL)
-////			printf("l - {%s} ;", left->name_room);
-////		if (right != NULL)
-////			printf("r - {%s} ;", right->name_room);
-////		printf("\n");
-////		i++;
-////	}
-//	i = 0;
-//	avl_node *tmp;
-//	tmp = root.root;
-//
-//
-//	/*  pechyat karty  */
-////	i = 0;
-////	while (tree[i].str)
-////		ft_putendl(tree[i++].str);
-////	i = 0;
-////	while (link[i])
-////		ft_putendl(link[i++]);
-////	printf("%d   start - %s , end - %s \n", root.ant, root.start->name_room[0], root.end->name_room[0]);
-////	printf("count - %d\n", root.count);
-///*                        */
-//
-//
-//
-//
-//
-///*   prosmotr svyazey   */
-//	list_link	*tmp2;
-//
-//	tmp2 = tree[3].link_room;
-//	printf("%s - ", tree[3].name_room[0]);
-//	while (tmp2)
-//	{
-//		printf("  {%s - %s }  ", tmp2->data->link_arr[0]->name_room[0], tmp2->data->link_arr[1]->name_room[0]);
-//		if (tmp2->data->status == root.st)
-//			printf("\nstatus 0  level %d \n" , tmp2->data->link_arr[1]->level);
-//		tmp2 = tmp2->next;
-//	}
-//	printf("\n");
-///*                                 */
 
-//	i = 0;
-//	while (link[i].str)
-//	{
-//		printf("[%d] %s   {%s -  %s}\n", link[i].status, link[i].str, link[i].link_arr[0]->name_room[0], link[i].link_arr[1]->name_room[0]);
-//		i++;
-//	}
+	int		kol;
+	int		ind;
 
-//	int x = 0;
-//	int y = 0;
-//	while(ways[x])
-//	{
-//		y = 0;
-//		printf("%p\n", ways[x]);
-//		while (ways[x] && ways[x][y])
-//		{
-//			printf("%s   ", ways[x][y]->name_room[0]);
-//			y++;
-//		}
-//		printf("\n");
-//		x++;
-//	}
-//
-//
-//
-////	list_link *ltmp;
-////	ltmp = tree[4].link_room;
-////	printf("%s   ", tree[4].name_room[0]);
-////	while (ltmp)
-////	{
-////		printf("%d  ", ltmp->incld_in_way);
-////		ltmp = ltmp->next;
-////	}
-//
+	kol = 0;
+	l = 0;
+	ways[0].status = 1;
+	ind = 0;
+	while (ways[ind].head && kol < root.ant)
+	{
+		kol = 0;
+		l = 0;
+		while (ways[l].head && ways[l].status == 1)
+			kol += ways[ind].steps - ways[l++].steps + 1;
+		if (kol == root.ant || !ways[ind + 1].head)
+			break;
+		if (ways[ind].head && kol < root.ant )
+			ways[++ind].status = 1;
+		else
+			ways[--ind].status = 0;
+	}
+	printf("%d\n", ind);
+	l = 0;
+	kol = 0;
+	while (ways[l].status > 0)
+
 
 /*      фришим всю память */
 	i = 0;

@@ -18,7 +18,6 @@ int			bfs(avl_tree *root)
 	size_t		next;
 	size_t		end;
 	int			level;
-//	int			up_level;
 	int			stts;
 	int			i;
 	list_link	*tmp;
@@ -32,7 +31,6 @@ int			bfs(avl_tree *root)
 	next = 0;
 	end = 0;
 	level = root->start->level;
-//	up_level = 1;
 	while(turn[next])
 	{
 		if ((tmp = turn[next]->link_room))
@@ -50,7 +48,7 @@ int			bfs(avl_tree *root)
 					i = tmp->data->incld_in_way;
 					if (tmp->data->link_arr[i] != root->end)
 					{
-						if (tmp->data->link_arr[i]->level < turn[next]->level)
+						if (tmp->data->link_arr[i]->level < turn[next]->level && tmp->data->link_arr[i]->locked != 1)
 						{
 							tmp->data->link_arr[i]->level = level;
 							turn[++end] = tmp->data->link_arr[i];
@@ -63,19 +61,14 @@ int			bfs(avl_tree *root)
 						free(turn);
 						return (1);
 					}
-//				if (tmp->data->link_arr[0]->level > tmp->data->link_arr[1]->level)
-//					tmp->data->status = 0;
 				}
 				tmp = tmp->next;
 			}
 		}
 		next++;
-//		if (up_level == next)
-//		{
-//			up_level = end + 1;
-//			level++;
-//		}
 	}
 	free(turn);
 	return (0);
 }
+
+

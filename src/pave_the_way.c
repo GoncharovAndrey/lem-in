@@ -104,22 +104,24 @@ list_link		*pave_the_way(avl_tree *root)
 	list_link	*tmp_list;
 
 	tmp_room = root->end;
-	ret = ft_create_list(root->end->link_room->data);
+	ret = NULL;
 	while (tmp_room != root->start)
 	{
 		tmp = tmp_room->link_room;
-		printf("%s  \n", tmp_room->name_room[0]);
+//		printf("%s  \n", tmp_room->name_room[0]);
 		while (tmp->data->status != root->st || tmp->data->link_arr[1 - tmp->data->incld_in_way] == tmp_room || tmp->data->incld_in_way  < 0)
 			tmp = tmp->next;
 		tmp_list = ft_create_list(tmp->data);
 		tmp_list->next = ret;
 		ret = tmp_list;
-		printf("%s   %s\n", tmp->data->link_arr[0]->name_room[0], tmp->data->link_arr[1]->name_room[0]);
+//		printf("%s   %s\n", tmp->data->link_arr[0]->name_room[0], tmp->data->link_arr[1]->name_room[0]);
 //		if (tmp->data->incld_in_way == 1)
 //			tmp->data->incld_in_way = -1;
 //		else
 //			tmp->data->incld_in_way = 1;
 		tmp_room = tmp->data->link_arr[1 - tmp->data->incld_in_way];
+		if (tmp->data->incld_in_way == 1)
+			tmp->data->incld_in_way = -1;
 	}
 	return (ret);
 }

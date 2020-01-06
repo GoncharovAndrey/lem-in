@@ -59,6 +59,24 @@ t_ways			*ft_init_ways(avl_tree *root)
 	return (ways);
 }
 
+t_ant			*ft_init_ant(avl_tree *root)
+{
+	t_ant		*ant;
+	int			i;
+
+	i = 0;
+	ant = (t_ant*)malloc(sizeof(t_ant) * (root->ant + 2));
+	while (i < root->ant)
+	{
+		ant[i].day = 0;
+		ant[i].head = NULL;
+		ant[i].ant_name = i;
+		i++;
+	}
+	return (ant);
+}
+
+
 int		main()
 {
 	avl_node	*tree;
@@ -68,6 +86,7 @@ int		main()
 	int			l;
 	int			s;
 	t_ways		*ways;
+	t_ant		*ant;
 	list_link	*tmpw;
 
 	i = 0;
@@ -157,10 +176,51 @@ int		main()
 		else
 			ways[--ind].status = 0;
 	}
-	printf("%d\n", ind);
-	l = 0;
+	printf("%d  %d\n", ind, ways[ind].steps);
+	i = 0;
 	kol = 0;
-	while (ways[l].status > 0)
+	while (i <= ind)
+	{
+		ways[i].status = ways[ind].steps - ways[i].steps + 1;
+		kol += ways[i].status;
+		i++;
+	}
+	printf("%d\n", kol);
+	while (kol < root.ant)
+	{
+		if (i > ind)
+			i = 0;
+		ways[i].status++;
+		i++;
+		kol++;
+	}
+	printf("%d   %d\n", ways[0].status, ways[ind].status);
+	kol = 1;
+	i = 0;
+	int	d;
+	d = 1;
+	ant = ft_init_ant(&root);
+	while (kol <= root.ant)
+	{
+		if (ways[i].status == 0)
+		{
+			i = 0;
+			d++;
+		}
+		ant[kol].head = ways[i].head;
+		ways[i].status--;
+		ant[kol].day = d;
+		kol++;
+		i++;
+	}
+	printf("%d  %d\n", ant[13].day,ant[15].day);
+
+
+
+
+
+
+
 
 
 /*      фришим всю память */

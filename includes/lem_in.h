@@ -62,6 +62,14 @@ typedef struct			s_ways
 //	struct s_ways		*next;
 }						t_ways;
 
+typedef struct			s_ant
+{
+	list_link			*head;
+	int					ant_name;
+	int					day;
+}						t_ant;
+
+
 int				read_map(avl_node *tree, avl_tree *root, t_link *link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
 int				ft_add_list(avl_node *room, t_link *data);

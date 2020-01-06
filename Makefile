@@ -15,6 +15,7 @@ C_FILE =	main.c \
 			read_map.c \
 			bfs.c \
 			pave_the_way.c \
+			ft_print_res.c
 
 C_FIND =		$(addprefix $(SRC_P_DIR), $(C_FILE))
 

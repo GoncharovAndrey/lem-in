@@ -36,7 +36,7 @@ typedef struct			s_avl_tree
 	int					ant;
 	avl_node			*start;
 	avl_node			*end;
-//	int					kol;
+	int					day;
 	int					st;
 }						avl_tree;
 
@@ -78,5 +78,6 @@ int				bfs(avl_tree *root);
 list_link		*ft_create_list(t_link *data);
 list_link		*pave_the_way(avl_tree *root);
 list_link		*pave_the_way_finish(avl_tree *root);
+void			ft_print_res(t_ant *ant, avl_tree *root);
 
 #endif

@@ -18,7 +18,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	int		y;
 
 	i = 1;
-	while(i < root->day)
+	while(i < root->day[0])
 	{
 		y = 1;
 		printf("\n%d - day\n", i);

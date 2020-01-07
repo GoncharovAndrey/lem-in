@@ -36,7 +36,7 @@ typedef struct			s_avl_tree
 	int					ant;
 	avl_node			*start;
 	avl_node			*end;
-	int					day;
+	int					day[100];
 	int					st;
 }						avl_tree;
 

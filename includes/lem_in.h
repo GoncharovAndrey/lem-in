@@ -16,6 +16,10 @@
 # include "../lib/includes/ft_printf.h"
 #include <stdio.h>
 
+# define MAX_ROOM  10000
+# define MAX_LINK  10000
+# define SUPERPOSITION 1
+
 typedef struct			s_avl_node
 {
 	/*  если что проверить вынести дерево отдельно , и хранить в дата указатель на комнату*/
@@ -36,6 +40,8 @@ typedef struct			s_avl_tree
 	int					ant;
 	avl_node			*start;
 	avl_node			*end;
+	int					out;
+	struct s_ways		*short_way;
 	int					day[100];
 	int					st;
 }						avl_tree;
@@ -79,5 +85,11 @@ list_link		*ft_create_list(t_link *data);
 list_link		*pave_the_way(avl_tree *root);
 list_link		*pave_the_way_finish(avl_tree *root);
 void			ft_print_res(t_ant *ant, avl_tree *root);
+int				ft_init_structure(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways);
+t_ant			*ft_init_ant(avl_tree *root);
+t_ways			*ft_init_one_way(avl_tree *root);
+void			ft_off_include_way(t_ways *ways);
+void			ft_delete_incld_way(t_ways *ways);
+void			ft_locked_room(t_ways *ways);
 
 #endif

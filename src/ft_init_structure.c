@@ -18,13 +18,11 @@ t_ways		*ft_init_one_way(avl_tree *root)
 	return (ways);
 }
 
-int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways)
+int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 {
 	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
 		return (0);
 	if (!(*link = (t_link*)malloc(sizeof(t_link) * MAX_LINK)))
-		return (0);
-	if (!(*ways = (t_ways**)malloc(sizeof(t_ways*) * 2)))
 		return (0);
 	if (!(*root = (avl_tree*)malloc(sizeof(avl_tree) * 1)))
 		return (0);

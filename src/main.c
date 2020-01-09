@@ -27,10 +27,13 @@ void			ft_delete_incld_way(t_ways *ways)
 		while (tmp)
 		{
 			del = tmp;
+			if (tmp->data == NULL)
+				printf("Error 2\n");
 			if (tmp->data->incld_in_way != -1)
 				tmp->data->incld_in_way = 0;
 			tmp = tmp->next;
-			free(del);
+			if (del)
+				free(del);
 		}
 		i++;
 	}
@@ -47,6 +50,7 @@ void			ft_off_include_way(t_ways *ways)
 		tmp = ways[i].head;
 		while (tmp)
 		{
+//			printf("%p  tmp->data error\n", tmp->data);
 			if (tmp->data->incld_in_way != -1)
 				tmp->data->incld_in_way = 0;
 			tmp = tmp->next;
@@ -124,50 +128,43 @@ int		main()
 	i = 0;
 	l = 0;
 	s = 0;
-	ft_init_structure(&root,&tree,&link,&ways);
+	ft_init_structure(&root,&tree,&link);
 	read_map(tree, root, link);
-	ways = ft_init_ways(root);
-	while (bfs(root))
-	{
-//		while (link[i].str)
+	ways = ft_find_ways(root);
+//	while (bfs(root))
+//	{
+//		ways[s][l].head = pave_the_way(root);
+//		tmpw = ways[s][l].head;
+//		while (tmpw)
 //		{
-//			printf("[%d] %s   {%s -  %s}\n", link[i].status, link[i].str, link[i].link_arr[0]->name_room[0], link[i].link_arr[1]->name_room[0]);
-//			i++;
+//			if (tmpw->data->incld_in_way != -1)
+//				tmpw->data->incld_in_way = 1;
+//			else
+//			{
+//				ft_delete_incld_way(ways[s]);
+//				l = 0;
+//				while (bfs(root))
+//				{
+//					ways[s][l].head = pave_the_way_finish(root);
+//					tmpw = ways[s][l].head;
+//					while (tmpw)
+//					{
+//						tmpw->data->incld_in_way = 1;
+//						tmpw = tmpw->next;
+//					}
+//					l++;
+//				}
+////				printf("%d - l\n", l);
+//				ft_locked_room(ways[s]);
+//				ft_delete_incld_way(ways[s]);
+//				s++;
+//				l = -1;
+//				break;
+//			}
+//			tmpw = tmpw->next;
 //		}
-		ways[s][l].head = pave_the_way(root);
-		tmpw = ways[s][l].head;
-		while (tmpw)
-		{
-			if (tmpw->data->incld_in_way != -1)
-				tmpw->data->incld_in_way = 1;
-			else
-			{
-				ft_delete_incld_way(ways[s]);
-				l = 0;
-				while (bfs(root))
-				{
-					ways[s][l].head = pave_the_way_finish(root);
-					tmpw = ways[s][l].head;
-					while (tmpw)
-					{
-						tmpw->data->incld_in_way = 1;
-						tmpw = tmpw->next;
-					}
-					l++;
-				}
-//				printf("%d - l\n", l);
-				ft_locked_room(ways[s]);
-				ft_delete_incld_way(ways[s]);
-				s++;
-				l = -1;
-				break;
-			}
-//			printf("%d %s {ways[%d]}\n", tmpw->data->incld_in_way, tmpw->data->str, s);
-			tmpw = tmpw->next;
-		}
-		l++;
-//		printf("krug\n");
-	}
+//		l++;
+//	}
 
 //	l = 0;
 //	while (ways[l].head)
@@ -186,53 +183,69 @@ int		main()
 //		l++;
 //	}
 //	printf("do\n");
-	ft_delete_incld_way(ways[s]);
-	l = 0;
-	while (bfs(root))
-	{
-		ways[s][l].head = pave_the_way_finish(root);
-		tmpw = ways[s][l].head;
-		while (tmpw)
-		{
-			tmpw->data->incld_in_way = 1;
-			tmpw = tmpw->next;
-		}
-		l++;
-	}
+//	ft_delete_incld_way(ways[s]);
 
 
 	l = 0;
+	s = 0;
 	int	q;
 
 	q = 0;
-	printf("%d - s\n", s);
-	while (q <= s)
-	{
-		l = 0;
-//		printf("tut\n");
-		while (ways[q][l].head)
-		{
-			tmpw = ways[q][l].head;
-//		printf("     begin ----  %d\n", l);
-			i = 0;
-			while (tmpw)
-			{
-//			printf("%s {ways[%d]}\n", tmpw->data->str, s);
-				tmpw = tmpw->next;
-				i++;
-			}
-			ways[q][l].steps = i;
-//		printf(" ---- steps %d   ---\n\n", ways[q][l].steps);
-			l++;
-		}
-		q++;
-	}
-	ft_locked_room(ways[s]);
+//	printf("%d - s\n", s);
+//	while (q <= s)
+//	{
+//		l = 0;
+////		printf("tut\n");
+//		while (ways[q][l].head)
+//		{
+//			tmpw = ways[q][l].head;
+////		printf("     begin ----  %d\n", l);
+//			i = 0;
+//			while (tmpw)
+//			{
+////			printf("%s {ways[%d]}\n", tmpw->data->str, s);
+//				tmpw = tmpw->next;
+//				i++;
+//			}
+//			ways[q][l].steps = i;
+////		printf(" ---- steps %d   ---\n\n", ways[q][l].steps);
+//			l++;
+//		}
+//		q++;
+//	}
+//	int a,d = 0;
+//
+//
+//	while(ways[a])
+//	{
+//		d = 0;
+//		printf("%d  --- group\n", a);
+//		while (ways[a][d].head)
+//		{
+//			printf("%d - steps  %d - satatus  %p  -- head %d - way\n", ways[a][d].steps, ways[a][d].status,ways[a][d].head, d);
+//			d++;
+//		}
+//		a++;
+//	}
+
+
+//	list_link *tmpe;
+//
+//	tmpe = ways[0][0].head;
+//	printf("ways\n");
+//	while (tmpe)
+//	{
+//		printf("%s  - \n", tmpe->data->link_arr[0]->name_room[0]);
+//		tmpe = tmpe->next;
+//	}
+//	printf("end\n");
+
 
 	int		kol;
 	int		ind;
 
-	while (s >= 0)
+	s = 0;
+	while (ways[s])
 	{
 		kol = 0;
 		l = 0;
@@ -268,8 +281,8 @@ int		main()
 			kol++;
 		}
 		root->day[s] = ways[s][0].status + ways[s][0].steps - 1;
-		printf("%d\n", root->day[s]);
-		s--;
+		printf("%d \n", root->day[s]);
+		s++;
 	}
 
 //	kol = 1;
@@ -308,7 +321,7 @@ int		main()
 
 //		printf("%d locked\n", ways[1].head->data->link_arr[0]->locked);
 
-		printf("%s -tree", (*tree).str);
+//		printf("%s -tree", (*tree).str);
 
 
 /*      фришим всю память */

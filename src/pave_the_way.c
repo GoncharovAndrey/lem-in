@@ -28,12 +28,15 @@ list_link		*pave_the_way(avl_tree *root)
 			tmp->data->link_arr[1 - tmp->data->incld_in_way] == tmp_room || \
 				tmp->data->incld_in_way  < 0)
 			tmp = tmp->next;
+//		printf("%p tmp->data\n", tmp->data);
 		tmp_list = ft_create_list(tmp->data);
 		tmp_list->next = ret;
 		ret = tmp_list;
 		tmp_room = tmp->data->link_arr[1 - tmp->data->incld_in_way];
 		if (tmp->data->incld_in_way == 1)
 			tmp->data->incld_in_way = -1;
+		if (ret->data == NULL)
+			printf("Error\n");
 	}
 	return (ret);
 }

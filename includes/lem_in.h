@@ -85,11 +85,12 @@ list_link		*ft_create_list(t_link *data);
 list_link		*pave_the_way(avl_tree *root);
 list_link		*pave_the_way_finish(avl_tree *root);
 void			ft_print_res(t_ant *ant, avl_tree *root);
-int				ft_init_structure(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways);
+int				ft_init_structure(avl_tree **root, avl_node **tree, t_link **link);
 t_ant			*ft_init_ant(avl_tree *root);
 t_ways			*ft_init_one_way(avl_tree *root);
 void			ft_off_include_way(t_ways *ways);
 void			ft_delete_incld_way(t_ways *ways);
 void			ft_locked_room(t_ways *ways);
+t_ways			**ft_find_ways(avl_tree *root);
 
 #endif

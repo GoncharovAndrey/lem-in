@@ -18,7 +18,7 @@
 
 # define MAX_ROOM  10000
 # define MAX_LINK  10000
-# define SUPERPOSITION 1
+# define SUPERPOSITION
 
 typedef struct			s_avl_node
 {
@@ -42,7 +42,8 @@ typedef struct			s_avl_tree
 	avl_node			*end;
 	int					out;
 	struct s_ways		*short_way;
-	int					day[100];
+	int					day;
+
 	int					st;
 }						avl_tree;
 
@@ -92,5 +93,9 @@ void			ft_off_include_way(t_ways *ways);
 void			ft_delete_incld_way(t_ways *ways);
 void			ft_locked_room(t_ways *ways);
 t_ways			**ft_find_ways(avl_tree *root);
+int				ft_choose_way(avl_tree *root, t_ways **ways);
+t_ant			*ft_ants_on_the_way(avl_tree *root);
+void			ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant);
+void			ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant);
 
 #endif

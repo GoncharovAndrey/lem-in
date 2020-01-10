@@ -73,6 +73,8 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 		avl_insert(root, tree);
 		tree++;
 	}
+	free(tree->name_room[0]);
+	free(tree->name_room);
 	link->str = tree->str;
 	tree->str = NULL;
 	link_room = ft_strsplit(link->str, '-');
@@ -82,6 +84,11 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 	link->incld_in_way = 0;
 	ft_add_list(link->link_arr[0], link);
 	ft_add_list(link->link_arr[1], link);
+	/*надо будет вришить  link_room!!!!*/
+	free(link_room[0]);
+	free(link_room[1]);
+	free(link_room);
+	/* !!!!!!!!!!!!!!!!!!! */
 	link++;
 	while (get_next_line(STDIN_FILENO, &link->str))
 	{

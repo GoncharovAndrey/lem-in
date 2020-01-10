@@ -18,7 +18,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	int		y;
 
 	i = 1;
-	while(i < root->day[0])
+	while(i <= root->day)
 	{
 		y = 1;
 		printf("\n%d - day\n", i);
@@ -42,4 +42,20 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 		write(1, "\n", 1);
 		i++;
 	}
+}
+
+void	ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant)
+{
+	while (tree->str)
+	{
+		ft_putendl(tree->str);
+		tree++;
+	}
+	while (link->str)
+	{
+		ft_putendl(link->str);
+		link++;
+	}
+	write(1, "\n", 1);
+	ft_print_res(ant, root);
 }

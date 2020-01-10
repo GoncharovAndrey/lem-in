@@ -43,11 +43,11 @@ t_ways			*ft_quike_search(avl_tree *root, t_ways *ways)
 	return (NULL);
 }
 
-int				ft_for_suurballe(t_ways ways)
+int				ft_for_suurballe(t_ways *ways)
 {
 	list_link	*tmp;
 
-	tmp = ways.head;
+	tmp = ways->head;
 	while (tmp)
 	{
 		if (tmp->data->incld_in_way != -1)
@@ -105,7 +105,7 @@ t_ways			**ft_malloc_ways(avl_tree *root, t_ways **ways, size_t s)
 	{
 		if (!(tmp = (t_ways**)malloc(sizeof(t_ways*) * (s + 1))))
 			return (ft_delete_ways(&ways));
-		while (++i < s)
+		while (++i < s - 1)
 		{
 			if (ways[i])
 				tmp[i] = ways[i];
@@ -128,22 +128,19 @@ t_ways			**ft_suurballe(avl_tree *root, t_ways **ways)
 	while (bfs(root))
 	{
 		ways[s][l].head = pave_the_way(root);
-		if (!(ft_for_suurballe(ways[s][l])))
+		if (!(ft_for_suurballe(&ways[s][l])))
 		{
-//			ft_off_include_way(ways[s]);
 			ft_delete_incld_way(ways[s]);
 			ft_quike_search(root, ways[s]);
-			ft_locked_room(ways[s]);
+//			ft_locked_room(ways[s]);
 			ft_off_include_way(ways[s]);
 			s++;
-//			ways = ft_malloc_ways(root, ways, s + 1);
+			ways = ft_malloc_ways(root, ways, s + 2);
 			l = -1;
 		}
 		l++;
 	}
-//	printf("%d\n",s);
-//	ft_delete_incld_way(ways[s]);
-//	ft_quike_search(root,ways[s]);
+	ft_delete_incld_way(ways[s]);
 	free(ways[s]);
 	ways[s] = NULL;
 	return (ways);
@@ -154,13 +151,16 @@ t_ways			**ft_find_ways(avl_tree *root)
 	t_ways	**ways;
 
 	ft_find_out(root);
-	if (!(ways = ft_malloc_ways(root, NULL, 100)))
+	if (!(ways = ft_malloc_ways(root, NULL, 2)))
 		return (NULL);
 	ft_quike_search(root, ways[0]);
+#ifdef SUPERPOSITION
 	ft_off_include_way(ways[0]);
-	ft_locked_room(ways[0]);
-//	free(ways[1]);
-//	ways[1] = NULL;
+//	ft_locked_room(ways[0]);
 	ways = ft_suurballe(root, ways);
+#else
+	free(ways[1]);
+	ways[1] = NULL;
+#endif
 	return (ways);
 }

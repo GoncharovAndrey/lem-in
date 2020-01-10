@@ -10,9 +10,9 @@ t_ways		*ft_init_one_way(avl_tree *root)
 		return (NULL);
 	while (i < root->out)
 	{
-		ways->head = NULL;
-		ways->status = 0;
-		ways->steps = 0;
+		ways[i].head = NULL;
+		ways[i].status = 0;
+		ways[i].steps = 0;
 		i++;
 	}
 	return (ways);
@@ -28,6 +28,7 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 		return (0);
 	(*root)->short_way = NULL;
 	(*root)->root = NULL;
+	(*root)->day = 0;
 	(*root)->count = 0;
 	(*root)->st = 0;
 	return (1);

@@ -35,8 +35,6 @@ list_link		*pave_the_way(avl_tree *root)
 		tmp_room = tmp->data->link_arr[1 - tmp->data->incld_in_way];
 		if (tmp->data->incld_in_way == 1)
 			tmp->data->incld_in_way = -1;
-		if (ret->data == NULL)
-			printf("Error\n");
 	}
 	return (ret);
 }

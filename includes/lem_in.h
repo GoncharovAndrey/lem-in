@@ -43,8 +43,8 @@ typedef struct			s_avl_tree
 	int					out;
 	struct s_ways		*short_way;
 	int					day;
-
-	int					st;
+	struct s_turn		*queue;
+//	int					st;
 }						avl_tree;
 
 typedef struct			s_link
@@ -76,16 +76,26 @@ typedef struct			s_ant
 	int					day;
 }						t_ant;
 
-
+typedef struct			s_turn
+{
+	avl_node			**turn;
+	avl_node			*start;
+	avl_node			*end;
+	size_t				next;
+	size_t				last;
+	size_t				lvl_rm;
+	size_t				lvl_lnk;
+}						t_turn;
 
 int				read_map(avl_node *tree, avl_tree *root, t_link *link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
 int				ft_add_list(avl_node *room, t_link *data);
 void			ft_delete_list(list_link *head);
-int				bfs(avl_tree *root);
+int				bfs(t_turn *queue);
+//int				bfs(avl_tree *root);
 list_link		*ft_create_list(t_link *data);
-list_link		*pave_the_way(avl_tree *root);
-list_link		*pave_the_way_finish(avl_tree *root);
+list_link		*pave_the_way(t_turn *queue);
+list_link		*pave_the_way_finish(t_turn *queue);
 void			ft_print_res(t_ant *ant, avl_tree *root);
 int				ft_init_structure(avl_tree **root, avl_node **tree, t_link **link);
 t_ant			*ft_init_ant(avl_tree *root);
@@ -98,5 +108,7 @@ int				ft_choose_way(avl_tree *root, t_ways **ways);
 t_ant			*ft_ants_on_the_way(avl_tree *root);
 void			ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant);
 void			ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant);
+int				ft_init_queue(avl_tree *root);
+
 
 #endif

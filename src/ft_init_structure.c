@@ -18,6 +18,28 @@ t_ways		*ft_init_one_way(avl_tree *root)
 	return (ways);
 }
 
+int			ft_init_queue(avl_tree *root)
+{
+	t_turn	*tmp;
+
+	if (!(tmp = (t_turn*)malloc(sizeof(t_turn) * 1)))
+		return (0);
+	if (!(tmp->turn = (avl_node**)malloc(sizeof(avl_node*) * (root->count + 1))))
+	{
+		free(tmp);
+		return (0);
+	}
+	root->queue = tmp;
+	root->queue->next = 0;
+	root->queue->last = 0;
+	root->queue->lvl_rm = 0;
+	root->queue->lvl_lnk = 0;
+	root->queue->start = root->start;
+	root->queue->end = root->end;
+//	printf ("%s   %s\n", tmp->start->name_room[0], tmp->end->name_room[0]);
+	return (1);
+}
+
 int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 {
 	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
@@ -28,9 +50,10 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 		return (0);
 	(*root)->short_way = NULL;
 	(*root)->root = NULL;
+	(*root)->queue = NULL;
 	(*root)->day = 0;
 	(*root)->count = 0;
-	(*root)->st = 0;
+//	(*root)->st = 0;
 	return (1);
 }
 

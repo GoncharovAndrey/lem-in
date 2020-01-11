@@ -25,10 +25,10 @@ t_ways			*ft_quike_search(avl_tree *root, t_ways *ways)
 	i = 0;
 //	if (!(ways = ft_init_one_way(root)))
 //		return (NULL);
-	while (bfs(root))
+	while (bfs(root->queue))
 	{
 		s = 0;
-		ways[i].head = pave_the_way_finish(root);
+		ways[i].head = pave_the_way_finish(root->queue);
 		tmp = ways[i].head;
 		while(tmp)
 		{
@@ -125,9 +125,9 @@ t_ways			**ft_suurballe(avl_tree *root, t_ways **ways)
 
 	s = 1;
 	l = 0;
-	while (bfs(root))
+	while (bfs(root->queue))
 	{
-		ways[s][l].head = pave_the_way(root);
+		ways[s][l].head = pave_the_way(root->queue);
 		if (!(ft_for_suurballe(&ways[s][l])))
 		{
 			ft_delete_incld_way(ways[s]);

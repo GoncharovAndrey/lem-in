@@ -1,40 +1,79 @@
 #include "../includes/lem_in.h"
 
-void		ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant)
+void		ft_free_arr_str(char ***str)
 {
-	int		i;
-	int		q;
+	char **tmp;
 
-	i = 0;
-	q = 0;
-	while ((*ways)[i])
+	if (!str || !*str)
+		return ;
+	tmp = *str;
+	while (*tmp)
 	{
-		q = 0;
-		while ((*ways)[i][q].head)
-			ft_delete_list((*ways)[i][q++].head);
-		free((*ways)[i]);
-		i++;
+		free(*tmp);
+		tmp++;
+	}
+	free(*str);
+}
+
+void		ft_free_ways(t_ways ***ways)
+{
+	t_ways	**tmp_ways;
+	t_ways	*tmp_ow;
+
+	if (!ways || !*ways)
+		return ;
+	tmp_ways = *ways;
+	while (tmp_ways && *tmp_ways)
+	{
+		tmp_ow = *tmp_ways;
+		while (tmp_ow && tmp_ow->head)
+		{
+			ft_delete_list(tmp_ow->head);
+			tmp_ow++;
+		}
+		free(*tmp_ways);
+		tmp_ways++;
 	}
 	free(*ways);
-	i = 0;
-	while((*tree)[i].str)
+}
+
+void			ft_free_tree(avl_node **tree)
+{
+	avl_node	*tmp;
+
+	if (!tree || !*tree)
+		return ;
+	tmp = *tree;
+	while (tmp && tmp->str)
 	{
-		free((*tree)[i].name_room[0]);
-		free((*tree)[i].name_room[1]);
-		free((*tree)[i].name_room[2]);
-		free((*tree)[i].name_room);
-		free((*tree)[i].str);
-		ft_delete_list((*tree)[i].link_room);
-		i++;
-	}
-	i = 0;
-	while((*link)[i].str)
-	{
-		free((*link)[i].str);
-		i++;
+		ft_delete_list(tmp->link_room);
+		ft_free_arr_str(&(tmp->name_room));
+		free(tmp->str);
+		tmp++;
 	}
 	free(*tree);
-	free(*link);
-	free(*root);
-	free(*ant);
 }
+
+void			ft_free_link(t_link **link)
+{
+	t_link		*tmp;
+
+	if (!link || !*link)
+		return ;
+	tmp = *link;
+	while (tmp && tmp->str)
+	{
+		free(tmp->str);
+		tmp++;
+	}
+	free(*link);
+}
+
+	void		ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant)
+	{
+		ft_free_ways(ways);
+		ft_free_tree(tree);
+		ft_free_link(link);
+		free(root[0]);
+		free(ant[0]);
+	}

@@ -77,6 +77,7 @@ typedef struct			s_ant
 }						t_ant;
 
 
+
 int				read_map(avl_node *tree, avl_tree *root, t_link *link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
 int				ft_add_list(avl_node *room, t_link *data);

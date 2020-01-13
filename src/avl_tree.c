@@ -12,36 +12,30 @@
 
 #include "../includes/lem_in.h"
 
-
-
-
-int				avl_insert(avl_tree *tree, avl_node *new_node)
+avl_node		***ft_init_tmp(avl_tree *tree, avl_node *new_node)
 {
-//	avl_node ** v, *w, *x, *y, *z;
 	avl_node	***tmp;
-	int			dir;
 
-
-	tmp = (avl_node ***)malloc(sizeof(avl_node**) * 2);
-	tmp[0] = (avl_node**)malloc(sizeof(avl_node*) * 5);
-	tmp[1] = (avl_node**)malloc(sizeof(avl_node*) * 5);
+	if (!(tmp = (avl_node ***)malloc(sizeof(avl_node**) * 2)))
+		return (NULL);
+	if (!(tmp[0] = (avl_node**)malloc(sizeof(avl_node*) * 5)))
+	{
+		free(tmp);
+		return (NULL);
+	}
 	tmp[0][1] = tree->root;
 	tmp[0][3] = tmp[0][1];
 	tmp[0][4] = new_node;
 	tmp[1] = &tree->root;
+	return (tmp);
+}
 
-	if (tmp[0][1] == NULL)
-	{
-		tree->root = new_node;
-		tree->count++;
-		return 1;
-	}
+int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *tree)
+{
+	int			dir;
 
-/* фрагмент №1 */
-/* поиск подходящей позиции и последующая вставка элемента */
-	while(tmp[0][3] /*z*/)
+	while(tmp[0][3])
 	{
-		/* такой элемент уже есть в дереве – функцию можно завершить */
 		if(!(dir = ft_strcmp(tmp[0][4]->name_room[0], tmp[0][3]->name_room[0])))
 			return 2;
 		dir = (dir > 0) ;
@@ -62,7 +56,53 @@ int				avl_insert(avl_tree *tree, avl_node *new_node)
 		}
 		tmp[0][3] = tmp[0][2];
 	}
+	return (1);
+}
 
+int				avl_insert(avl_tree *tree, avl_node *new_node)
+{
+//	avl_node ** v, *w, *x, *y, *z;
+	avl_node	***tmp;
+	int			dir;
+
+	if (!(tmp = ft_init_tmp(tree, new_node)))
+		return (0);
+
+	if (tmp[0][1] == NULL)
+	{
+		tree->root = new_node;
+		tree->count++;
+		free(tmp[0]);
+		free(tmp);
+		return 1;
+	}
+
+/* фрагмент №1 */
+/* поиск подходящей позиции и последующая вставка элемента */
+//	while(tmp[0][3] /*z*/)
+//	{
+//		/* такой элемент уже есть в дереве – функцию можно завершить */
+//		if(!(dir = ft_strcmp(tmp[0][4]->name_room[0], tmp[0][3]->name_room[0])))
+//			return 2;
+//		dir = (dir > 0) ;
+//		tmp[0][2] = tmp[0][3]->link[dir];
+//		if(tmp[0][2] == NULL)
+//		{
+//			tmp[0][3]->link[dir] = tmp[0][4];
+//			tmp[0][2] = tmp[0][4];
+//			tree->count++;
+//			if(tmp[0][2] == NULL)
+//				return 0;
+//			break;
+//		}
+//		if(tmp[0][2]->bal != 0)
+//		{
+//			tmp[1] = &tmp[0][3]->link[dir];
+//			tmp[0][1] = tmp[0][2];
+//		}
+//		tmp[0][3] = tmp[0][2];
+//	}
+	ft_search_insert_pos_avl(tmp, tree);
 /* фрагмент №2 */
 /* пересчет коэффициентов сбалансированности для узлов, затронутых вставкой */
 	dir = (ft_strcmp(tmp[0][4]->name_room[0], tmp[0][1]->name_room[0]) > 0);

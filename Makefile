@@ -20,6 +20,7 @@ C_FILE =	main.c \
 			ft_find_ways.c \
 			ft_free_all.c \
 			ft_init_structure.c \
+			avl_rotation.c
 
 C_FIND =		$(addprefix $(SRC_P_DIR), $(C_FILE))
 

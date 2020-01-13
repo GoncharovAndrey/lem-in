@@ -92,6 +92,8 @@ typedef struct			s_turn
 
 int				read_map(avl_node *tree, avl_tree *root, t_link *link);
 int				avl_insert(avl_tree *tree, avl_node *new_node);
+void			ft_left_rotation(avl_node ***tmp);
+void			ft_right_rotation(avl_node ***tmp);
 int				ft_add_list(avl_node *room, t_link *data);
 void			ft_delete_list(list_link *head);
 int				bfs(t_turn *queue);

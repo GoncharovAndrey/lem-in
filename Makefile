@@ -15,7 +15,11 @@ C_FILE =	main.c \
 			read_map.c \
 			bfs.c \
 			pave_the_way.c \
-			ft_print_res.c
+			ft_print_res.c \
+			ft_choose_way.c \
+			ft_find_ways.c \
+			ft_free_all.c \
+			ft_init_structure.c \
 
 C_FIND =		$(addprefix $(SRC_P_DIR), $(C_FILE))
 

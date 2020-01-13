@@ -21,7 +21,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	while(i <= root->day)
 	{
 		y = 1;
-//		printf("\n%d - day\n", i);
+		printf("\n%d - day\n", i);
 		while (y <= root->ant)
 		{
 //			printf("%d - y  %i\n", y,i);

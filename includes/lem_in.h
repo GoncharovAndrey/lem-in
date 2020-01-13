@@ -20,6 +20,8 @@
 # define MAX_LINK  10000
 # define SUPERPOSITION
 
+
+/* структура информации о комнатте */
 typedef struct			s_avl_node
 {
 	/*  если что проверить вынести дерево отдельно , и хранить в дата указатель на комнату*/
@@ -47,6 +49,7 @@ typedef struct			s_avl_tree
 //	int					st;
 }						avl_tree;
 
+/* структура информации о связи */
 typedef struct			s_link
 {
 	char				*str;

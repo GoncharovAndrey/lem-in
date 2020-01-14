@@ -52,8 +52,6 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 
 void	ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant)
 {
-	ft_putnbr(root->ant);
-	write(1, "\n", 1);
 	while (tree->str)
 	{
 		ft_putendl(tree->str);

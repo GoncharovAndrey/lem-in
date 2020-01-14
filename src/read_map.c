@@ -49,67 +49,47 @@ int				ft_check_map(avl_node **tree, avl_tree *root)
 
 int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 {
-	char		*str;
 	int			opr;
-	char		**link_room;
-	avl_node	*tmp[2];
-
+//	char		**link_room;
+//	avl_node	*tmp[2];
+	char		*str;
 	get_next_line(STDIN_FILENO, &str);
-	root->ant = ft_atoi(str);
+	if ((root->ant = ft_atoi(str)) <= 0)
+		return (0);
 	free(str);
+	//	tree++;
 	while (get_next_line(STDIN_FILENO, &tree->str))
 	{
-//		if (ft_check_room(&tree, root) == 1)
-//			continue;
-//		tree->name_room = ft_strsplit(tree->str, 32);
-		if (!(opr = ft_check_room(&tree, root)))
+		if (!(opr = ft_check_room(tree, root)))
 			return (0);
 		if (opr == 1)
+		{
+			tree++;
 			continue;
+		}
 		else if (opr == 2)
 			break;
-		tree->link[0] = NULL;
-		tree->link[1] = NULL;
-		tree->bal = 0;
-		tree->level = 0;
-		tree->locked = 0;
-		tree->link_room = NULL;
-		avl_insert(root, tree);
+		if (avl_insert(root, tree) == 0)
+			return (0);
 		tree++;
 	}
-	free(tree->name_room[0]);
-	free(tree->name_room);
+	if (!root->start || !root->end || root->start == tree || root->end == tree)
+		return (0);
+
+	ft_free_arr_str(&tree->name_room);
 	link->str = tree->str;
 	tree->str = NULL;
-	link_room = ft_strsplit(link->str, '-');
-	link->link_arr[0] = ft_find_room(link_room[0], root->root);
-	link->link_arr[1] = ft_find_room(link_room[1], root->root);
-	link->status = 0;
-	link->incld_in_way = 0;
-	ft_add_list(link->link_arr[0], link);
-	ft_add_list(link->link_arr[1], link);
-	/*надо будет вришить  link_room!!!!*/
-	free(link_room[0]);
-	free(link_room[1]);
-	free(link_room);
-	/* !!!!!!!!!!!!!!!!!!! */
+	ft_check_link(link, root);
 	link++;
+//	return (0);
 	while (get_next_line(STDIN_FILENO, &link->str))
 	{
-		link_room = ft_strsplit(link->str, '-');
-		link->link_arr[0] = ft_find_room(link_room[0], root->root);
-		link->link_arr[1] = ft_find_room(link_room[1], root->root);
-		link->status = 0;
-		link->incld_in_way = 0;
-		ft_add_list(link->link_arr[0], link);
-		ft_add_list(link->link_arr[1], link);
-		/*надо будет вришить  link_room!!!!*/
-		free(link_room[0]);
-		free(link_room[1]);
-		free(link_room);
-		/* !!!!!!!!!!!!!!!!!!! */
+		ft_check_link(link, root);
 		link++;
 	}
 	link->str = NULL;
+	if (!root->start || !root->end)
+		return (0);
+//	exit(0);
 	return 1;
 }

@@ -44,8 +44,10 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 {
 	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
 		return (0);
+	ft_memset(*tree, 0, sizeof(avl_node) * MAX_ROOM);
 	if (!(*link = (t_link*)malloc(sizeof(t_link) * MAX_LINK)))
 		return (0);
+	ft_memset(*link, 0, sizeof(t_link) * MAX_LINK);
 	if (!(*root = (avl_tree*)malloc(sizeof(avl_tree) * 1)))
 		return (0);
 	(*root)->short_way = NULL;
@@ -67,14 +69,11 @@ t_ant			*ft_init_ant(avl_tree *root)
 	i = 0;
 	if (!(ant = (t_ant*)malloc(sizeof(t_ant) * (root->ant + 2))))
 		return (NULL);
+	ft_memset(ant, 0, sizeof(t_ant) * (root->ant + 2));
 	while (i <= root->ant)
 	{
-		ant[i].day = 0;
-		ant[i].head = NULL;
 		ant[i].ant_name = i;
-//		ant[i].ant_name = ft_itoa(i);
 		i++;
 	}
-	ant[i].ant_name = 0;
 	return (ant);
 }

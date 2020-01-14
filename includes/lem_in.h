@@ -19,16 +19,12 @@
 
 # define MAX_ROOM  10000
 # define MAX_LINK  10000
-# define SUPERPOSITION
+//# define SUPERPOSITION
 
-
-/* структура информации о комнатте */
 typedef struct			s_avl_node
 {
-	/*  если что проверить вынести дерево отдельно , и хранить в дата указатель на комнату*/
 	struct s_avl_node	*link[2];
 	short int			bal;
-	/*        еще проверить сначало все считать потом формитровать дерево                 */
 	char				*str;
 	char				**name_room;
 	struct s_list_link	*link_room;
@@ -50,7 +46,6 @@ typedef struct			s_avl_tree
 //	int					st;
 }						avl_tree;
 
-/* структура информации о связи */
 typedef struct			s_link
 {
 	char				*str;
@@ -70,7 +65,6 @@ typedef struct			s_ways
 	list_link			*head;
 	int					steps;
 	int					status;
-//	struct s_ways		*next;
 }						t_ways;
 
 typedef struct			s_ant
@@ -116,7 +110,9 @@ t_ant			*ft_ants_on_the_way(avl_tree *root);
 void			ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant);
 void			ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant);
 int				ft_init_queue(avl_tree *root);
-int				ft_check_room(avl_node **tree, avl_tree *root);
-
+int				ft_check_room(avl_node *tree, avl_tree *root);
+void			ft_free_arr_str(char ***str);
+avl_node		*ft_find_room(char *str, avl_node *root);
+int				ft_check_link(t_link *link, avl_tree *root);
 
 #endif

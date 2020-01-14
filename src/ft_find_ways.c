@@ -154,13 +154,13 @@ t_ways			**ft_find_ways(avl_tree *root)
 	if (!(ways = ft_malloc_ways(root, NULL, 2)))
 		return (NULL);
 	ft_quike_search(root, ways[0]);
-#ifdef SUPERPOSITION
+//#ifdef SUPERPOSITION
 	ft_off_include_way(ways[0]);
 //	ft_locked_room(ways[0]);
 	ways = ft_suurballe(root, ways);
-#else
-	free(ways[1]);
-	ways[1] = NULL;
-#endif
+//#else
+//	free(ways[1]);
+//	ways[1] = NULL;
+//#endif
 	return (ways);
 }

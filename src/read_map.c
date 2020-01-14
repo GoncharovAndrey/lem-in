@@ -79,17 +79,19 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 	ft_free_arr_str(&tree->name_room);
 	link->str = tree->str;
 	tree->str = NULL;
-	ft_check_link(link, root);
+	if (ft_check_link(link, root) == 0)
+		return (0);
 	link++;
 //	return (0);
 	while (get_next_line(STDIN_FILENO, &link->str))
 	{
-		ft_check_link(link, root);
+		if (ft_check_link(link, root) == 0)
+			return (0);
 		link++;
 	}
 	link->str = NULL;
-	if (!root->start || !root->end)
-		return (0);
+//	if (!root->start || !root->end)
+//		return (0);
 //	exit(0);
 	return 1;
 }

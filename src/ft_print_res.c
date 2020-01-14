@@ -38,7 +38,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	{
 		y = 0;
 		tmp = ant + 1;
-//		printf("\n%d - day\n", i);
+		printf("\n%d - day\n", i);
 		while (tmp->ant_name)
 		{
 			if (tmp->day == i)

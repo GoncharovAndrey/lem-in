@@ -77,7 +77,6 @@ int			ft_check_start_end(avl_node *tree, avl_tree *root)
 		else
 			return (0);
 	}
-//	++*tree;
 	return (1);
 }
 
@@ -107,12 +106,28 @@ int			ft_check_room(avl_node *tree, avl_tree *root)
 	return (7);
 }
 
+int			ft_check_sharp_link(t_link *link)
+{
+	if (ft_strncmp("#", link->str, 1) == 0)
+	{
+		if (ft_strncmp("##", link->str, 2) == 0)
+			return (0);
+		else
+			return (1);
+	}
+	return (7);
+}
+
 int		ft_check_link(t_link *link, avl_tree *root)
 {
 	char	**tmp_link;
 
 	if (!link->str || !*(link->str))
 		return (0);
+	if (ft_check_sharp_link(link) == 0)
+		return (0);
+	else if (ft_check_sharp_link(link) == 1)
+		return (1);
 	if (!(tmp_link = ft_strsplit(link->str, '-')))
 		return (0);
 	if (!tmp_link[0] || !tmp_link[1] || tmp_link[2])

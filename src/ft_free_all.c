@@ -75,10 +75,12 @@ void			ft_free_link(t_link **link)
 		ft_free_tree(tree);
 		ft_free_link(link);
 		/* проверить на существованеи */
-//		free((*root)->queue->turn);
-//		free((*root)->queue);
-//		free(root[0]);
+		if ((*root)->queue->turn)
+			free((*root)->queue->turn);
+		if ((*root)->queue)
+			free((*root)->queue);
+		free(root[0]);
 		/* !!!!!! */
-		if( ant && ant[0])
-			free(ant[0]);
+		if(ant && *ant)
+			free(*ant);
 	}

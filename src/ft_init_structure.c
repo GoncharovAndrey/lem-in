@@ -50,13 +50,14 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 	ft_memset(*link, 0, sizeof(t_link) * MAX_LINK);
 	if (!(*root = (avl_tree*)malloc(sizeof(avl_tree) * 1)))
 		return (0);
-	(*root)->short_way = NULL;
-	(*root)->root = NULL;
-	(*root)->queue = NULL;
-	(*root)->day = 0;
-	(*root)->count = 0;
-	(*root)->start = NULL;
-	(*root)->end = NULL;
+	ft_memset((*root), 0, sizeof(avl_tree));
+//	(*root)->short_way = NULL;
+//	(*root)->root = NULL;
+//	(*root)->queue = NULL;
+//	(*root)->day = 0;
+//	(*root)->count = 0;
+//	(*root)->start = NULL;
+//	(*root)->end = NULL;
 //	(*root)->st = 0;
 	return (1);
 }

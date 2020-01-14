@@ -96,7 +96,8 @@ int		main()
 	}
 	else
 		ft_putendl("Error");
+	exit(0);
+//	ft_free_all(&root, &tree, &link, &ways, &ant);
 //	exit(0);
-	ft_free_all(&root, &tree, &link, &ways, &ant);
 	return 0;
 }

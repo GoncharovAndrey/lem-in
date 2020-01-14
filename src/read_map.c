@@ -59,9 +59,12 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 	free(str);
 	while (get_next_line(STDIN_FILENO, &tree->str))
 	{
-
-		tree->name_room = ft_strsplit(tree->str, 32);
-		if (!(opr = ft_check_map(&tree, root)))
+//		if (ft_check_room(&tree, root) == 1)
+//			continue;
+//		tree->name_room = ft_strsplit(tree->str, 32);
+		if (!(opr = ft_check_room(&tree, root)))
+			return (0);
+		if (opr == 1)
 			continue;
 		else if (opr == 2)
 			break;

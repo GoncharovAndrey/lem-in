@@ -12,32 +12,38 @@
 
 #include "../includes/lem_in.h"
 
+void		ft_for_print_res(t_ant *tmp, int *y)
+{
+	if (*y != 0)
+		write(1, " ", 1);
+	write(1, "L", 1);
+	ft_putnbr(tmp->ant_name);
+	write(1, "-", 1);
+	ft_putstr(tmp->head->data->link_arr[0]->name_room[0]);
+	tmp->day++;
+	tmp->head = (*tmp).head->next;
+	if (tmp->head == NULL)
+		tmp->day = 0;
+	(*y)++;
+}
+
 void		ft_print_res(t_ant *ant, avl_tree *root)
 {
 	int		i;
 	int		y;
+	t_ant	*tmp;
 
 	i = 1;
 	while(i <= root->day)
 	{
-		y = 1;
-		printf("\n%d - day\n", i);
-		while (y <= root->ant)
+		y = 0;
+		tmp = ant + 1;
+//		printf("\n%d - day\n", i);
+		while (tmp->ant_name)
 		{
-//			printf("%d - y  %i\n", y,i);
-			if (ant[y].day == i)
-			{
-				write(1, "L", 1);
-				ft_putnbr(ant[y].ant_name);
-				write(1, "-", 1);
-				ft_putstr(ant[y].head->data->link_arr[0]->name_room[0]);
-				write(1, " ", 1);
-				ant[y].day++;
-				ant[y].head = ant[y].head->next;
-				if (ant[y].head == NULL)
-					ant[y].day = 0;
-			}
-			y++;
+			if (tmp->day == i)
+				ft_for_print_res(tmp, &y);
+			tmp++;
 		}
 		write(1, "\n", 1);
 		i++;
@@ -47,6 +53,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 void	ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant)
 {
 	ft_putnbr(root->ant);
+	write(1, "\n", 1);
 	while (tree->str)
 	{
 		ft_putendl(tree->str);

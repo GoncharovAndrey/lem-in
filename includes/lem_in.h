@@ -14,6 +14,7 @@
 #define LEM_IN_H
 
 # include "../lib/includes/ft_printf.h"
+# include <limits.h>
 #include <stdio.h>
 
 # define MAX_ROOM  10000
@@ -75,6 +76,7 @@ typedef struct			s_ways
 typedef struct			s_ant
 {
 	list_link			*head;
+//	char				*ant_name;
 	int					ant_name;
 	int					day;
 }						t_ant;
@@ -114,6 +116,7 @@ t_ant			*ft_ants_on_the_way(avl_tree *root);
 void			ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant);
 void			ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant);
 int				ft_init_queue(avl_tree *root);
+int				ft_check_room(avl_node **tree, avl_tree *root);
 
 
 #endif

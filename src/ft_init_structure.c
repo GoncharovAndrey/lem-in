@@ -53,6 +53,8 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 	(*root)->queue = NULL;
 	(*root)->day = 0;
 	(*root)->count = 0;
+	(*root)->start = NULL;
+	(*root)->end = NULL;
 //	(*root)->st = 0;
 	return (1);
 }
@@ -70,7 +72,9 @@ t_ant			*ft_init_ant(avl_tree *root)
 		ant[i].day = 0;
 		ant[i].head = NULL;
 		ant[i].ant_name = i;
+//		ant[i].ant_name = ft_itoa(i);
 		i++;
 	}
+	ant[i].ant_name = 0;
 	return (ant);
 }

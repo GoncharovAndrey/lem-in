@@ -21,73 +21,42 @@ avl_node		*ft_find_room(char *str, avl_node *root)
 	while (tmp)
 	{
 		if (!(side = ft_strcmp(str, tmp->name_room[0])))
-		{
 			return (tmp);
-		}
 		side = (side > 0);
 		tmp = tmp->link[side];
 	}
 	return (NULL);
 }
 
-int				ft_check_map(avl_node **tree, avl_tree *root)
+int				ft_read_ant(char *str)
 {
-	if (ft_strcmp("##start", (*tree)->name_room[0]) == 0)
-	{
-		root->start = ++*tree;
-		return 0;
-	}
-	if (ft_strcmp("##end", (*tree)->name_room[0]) == 0)
-	{
-		root->end = ++*tree;
-		return 0;
-	}
-	if (!(*tree)->name_room[1])
-		return 2;
-	return 1;
-}
-
-int				ft_read_ant(void)
-{
-	char		*str;
 	int			res;
-	int			flag;
 
-
-	str = NULL;
-	flag = 1;
-	flag = get_next_line(STDIN_FILENO, &str);
-//	printf("%d\n", flag);
-	if (flag <= 0)
-		return (0);
-//	printf("tut %p\n", str);
 	if (!str)
-		return (0);
-	res = ft_atoi_max(str, &flag);
-//	printf("%d\n", res);
-	if (!flag || !ft_is_number(str))
-	{
-		free(str);
-		return (0);
-	}
-	free(str);
+		ft_close_error();
+	res = ft_atoi_max(str);
+	if (res < 0)
+		ft_close_error();
 	return (res);
 }
 
 int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 {
 	int			opr;
-//	char		**link_room;
-//	avl_node	*tmp[2];
-//	char		*str;
 
-	root->ant = ft_read_ant();
-	if (root->ant <= 0)
-		return (0);
-	while (get_next_line(STDIN_FILENO, &tree->str) >= 0)
+	while (get_next_line(STDIN_FILENO, &tree->str) > 0)
 	{
-		if (!(opr = ft_check_room(tree, root)))
-			return (0);
+		if (ft_check_sharp_str(tree->str) != 1)
+		{
+			root->ant = ft_read_ant(tree->str);
+			tree++;
+			break;
+		}
+		tree++;
+	}
+	while (get_next_line(STDIN_FILENO, &tree->str) > 0)
+	{
+		opr = ft_check_room(tree, root);
 		if (opr == 1)
 		{
 			tree++;
@@ -96,28 +65,19 @@ int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 		else if (opr == 2)
 			break;
 		if (avl_insert(root, tree) == 0)
-			return (0);
+			ft_close_error();
 		tree++;
 	}
 	if (!root->start || !root->end || root->start == tree || root->end == tree)
-		return (0);
-
-	ft_free_arr_str(&tree->name_room);
+		ft_close_error();
 	link->str = tree->str;
-	tree->str = NULL;
-	if (ft_check_link(link, root) == 0)
-		return (0);
+	ft_check_link(link, root);
 	link++;
-//	return (0);
 	while (get_next_line(STDIN_FILENO, &link->str))
 	{
-		if (ft_check_link(link, root) == 0)
-			return (0);
+		ft_check_link(link, root);
 		link++;
 	}
 	link->str = NULL;
-//	if (!root->start || !root->end)
-//		return (0);
-//	exit(0);
-	return 1;
+	return (1);
 }

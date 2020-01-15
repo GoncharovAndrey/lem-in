@@ -104,7 +104,7 @@ t_ways			**ft_malloc_ways(avl_tree *root, t_ways **ways, size_t s)
 	else
 	{
 		if (!(tmp = (t_ways**)malloc(sizeof(t_ways*) * (s + 1))))
-			return (ft_delete_ways(&ways));
+			ft_close_error();
 		while (++i < s - 1)
 		{
 			if (ways[i])
@@ -132,7 +132,6 @@ t_ways			**ft_suurballe(avl_tree *root, t_ways **ways)
 		{
 			ft_delete_incld_way(ways[s]);
 			ft_quike_search(root, ways[s]);
-//			ft_locked_room(ways[s]);
 			ft_off_include_way(ways[s]);
 			s++;
 			ways = ft_malloc_ways(root, ways, s + 2);

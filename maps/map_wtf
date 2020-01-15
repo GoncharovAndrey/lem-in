@@ -1,4 +1,5 @@
 111
+#./lem_in < ./maps/map_wtf  0.10s user 0.06s system 86% cpu 0.182 total 47
 #Here is the number of lines required: 83
 ##start
 Hy_7 3 3

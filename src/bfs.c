@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-void		ft_prev_bfs(t_turn *queue)
+static void			ft_prev_bfs(t_turn *queue)
 {
 	queue->next = 0;
 	queue->last = 0;
@@ -23,20 +23,25 @@ void		ft_prev_bfs(t_turn *queue)
 	queue->start->level = queue->lvl_rm;
 }
 
-int			ft_check_link_bfs(t_turn *queue, list_link *tmp)
+static void			ft_swap_link_arr(t_turn *queue, t_link *data)
 {
-	int		i;
+	data->link_arr[0] = data->link_arr[1];
+	data->link_arr[1] = queue->turn[queue->next];
+}
 
-	if (tmp->data->link_arr[0] == queue->turn[queue->next] && tmp->data->status < queue->lvl_rm &&
-		tmp->data->incld_in_way == 0)
-	{
-		tmp->data->link_arr[0] = tmp->data->link_arr[1];
-		tmp->data->link_arr[1] = queue->turn[queue->next];
-	}
+
+static int			ft_check_link_bfs(t_turn *queue, list_link *tmp)
+{
+	int				i;
+
+	if (tmp->data->link_arr[0] == queue->turn[queue->next] &&
+			tmp->data->status <queue->lvl_rm &&tmp->data->incld_in_way == 0)
+		ft_swap_link_arr(queue, tmp->data);
 	i = tmp->data->incld_in_way;
 	if (tmp->data->link_arr[i] != queue->end)
 	{
-		if (tmp->data->link_arr[i]->level < queue->lvl_rm && tmp->data->link_arr[i]->locked != 1)
+		if (tmp->data->link_arr[i]->level < queue->lvl_rm &&
+				tmp->data->link_arr[i]->locked != 1)
 		{
 			tmp->data->link_arr[i]->level = queue->lvl_rm;
 			queue->last++;
@@ -53,7 +58,7 @@ int			ft_check_link_bfs(t_turn *queue, list_link *tmp)
 	return (0);
 }
 
-int			bfs(t_turn *queue)
+int				bfs(t_turn *queue)
 {
 	list_link	*tmp;
 

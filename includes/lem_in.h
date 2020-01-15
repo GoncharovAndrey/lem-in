@@ -93,7 +93,6 @@ void			ft_right_rotation(avl_node ***tmp);
 int				ft_add_list(avl_node *room, t_link *data);
 void			ft_delete_list(list_link *head);
 int				bfs(t_turn *queue);
-//int				bfs(avl_tree *root);
 list_link		*ft_create_list(t_link *data);
 list_link		*pave_the_way(t_turn *queue);
 list_link		*pave_the_way_finish(t_turn *queue);
@@ -114,5 +113,9 @@ int				ft_check_room(avl_node *tree, avl_tree *root);
 void			ft_free_arr_str(char ***str);
 avl_node		*ft_find_room(char *str, avl_node *root);
 int				ft_check_link(t_link *link, avl_tree *root);
+int				ft_atoi_max(const char *nptr);
+int				ft_is_number(char *num);
+int				ft_check_sharp_str(char *str);
+void			ft_close_error(void);
 
 #endif

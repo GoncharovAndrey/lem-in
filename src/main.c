@@ -91,19 +91,13 @@ int		main()
 	t_ant		*ant;
 
 	ft_init_structure(&root,&tree,&link);
-	if (!(read_map(tree, root, link)))
-	{
-		ft_close_error();
-//		ft_putendl("ERROR");
-//		ft_free_all(&root, &tree, &link, &ways, &ant);
-//		return 0;
-	}
-	//		ft_close_error();
+	read_map(tree, root, link);
 	ft_init_queue(root);
 	ways = ft_find_ways(root);
 	ft_choose_way(root, ways);
 	ant = ft_ants_on_the_way(root);
 	ft_print_all(root, tree, link, ant);
-	ft_free_all(&root, &tree, &link, &ways, &ant);
+	exit(0);
+//	ft_free_all(&root, &tree, &link, &ways, &ant);
 	return 0;
 }

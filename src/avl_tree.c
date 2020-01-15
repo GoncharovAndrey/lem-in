@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-avl_node		***ft_init_tmp(avl_tree *tree, avl_node *new_node)
+avl_node		***ft_init_tmp(avl_tree *root, avl_node *new_node)
 {
 	avl_node	***tmp;
 
@@ -23,14 +23,14 @@ avl_node		***ft_init_tmp(avl_tree *tree, avl_node *new_node)
 		free(tmp);
 		return (NULL);
 	}
-	tmp[0][1] = tree->root;
+	tmp[0][1] = root->root;
 	tmp[0][3] = tmp[0][1];
 	tmp[0][4] = new_node;
-	tmp[1] = &tree->root;
+	tmp[1] = &root->root;
 	return (tmp);
 }
 
-int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *tree)
+int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *root)
 {
 	int			dir;
 
@@ -45,7 +45,7 @@ int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *tree)
 		{
 			tmp[0][3]->link[dir] = tmp[0][4];
 			tmp[0][2] = tmp[0][4];
-			tree->count++;
+			root->count++;
 			break ;
 		}
 		if (tmp[0][2]->bal != 0)
@@ -84,22 +84,22 @@ void			ft_free_tmp(avl_node ****tmp)
 	free(*tmp);
 }
 
-int				avl_insert(avl_tree *tree, avl_node *new_node)
+int				avl_insert(avl_tree *root, avl_node *new_node)
 {
 	avl_node	***tmp;
 
 	if (!new_node)
 		return (0);
-	if (!(tmp = ft_init_tmp(tree, new_node)))
+	if (!(tmp = ft_init_tmp(root, new_node)))
 		return (0);
 	if (tmp[0][1] == NULL)
 	{
-		tree->root = new_node;
-		tree->count++;
+		root->root = new_node;
+		root->count++;
 		ft_free_tmp(&tmp);
 		return (1);
 	}
-	if (!ft_search_insert_pos_avl(tmp, tree))
+	if (!ft_search_insert_pos_avl(tmp, root))
 	{
 		ft_free_tmp(&tmp);
 		return (0);

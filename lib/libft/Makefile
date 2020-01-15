@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-FLAG = -Wall -Wextra -Werror
+FLAG = -g -Wall -Wextra -Werror
 HDR = -I ./
 FILE_FOR_LIB=   ft_isprint.c     ft_memmove.c     ft_putstr.c    \
                 ft_strdup.c      ft_strmapi.c     ft_strsplit.c  \

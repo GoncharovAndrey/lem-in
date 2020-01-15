@@ -9,19 +9,19 @@ OBJ_DIR =	./obj/
 
 SRC_DIR =	./src/
 
-C_FILE =	main.c \
+C_FILE =	avl_rotation.c \
 			avl_tree.c \
-			list.c \
-			read_map.c \
 			bfs.c \
-			pave_the_way.c \
-			ft_print_res.c \
+			ft_check_map.c \
 			ft_choose_way.c \
 			ft_find_ways.c \
 			ft_free_all.c \
 			ft_init_structure.c \
-			avl_rotation.c \
-			ft_check_map.c
+			ft_print_res.c \
+			list.c \
+			main.c \
+			pave_the_way.c \
+			read_map.c
 
 C_FIND =		$(addprefix $(SRC_P_DIR), $(C_FILE))
 

@@ -47,18 +47,44 @@ int				ft_check_map(avl_node **tree, avl_tree *root)
 	return 1;
 }
 
+int				ft_read_ant(void)
+{
+	char		*str;
+	int			res;
+	int			flag;
+
+
+	str = NULL;
+	flag = 1;
+	flag = get_next_line(STDIN_FILENO, &str);
+//	printf("%d\n", flag);
+	if (flag <= 0)
+		return (0);
+//	printf("tut %p\n", str);
+	if (!str)
+		return (0);
+	res = ft_atoi_max(str, &flag);
+//	printf("%d\n", res);
+	if (!flag || !ft_is_number(str))
+	{
+		free(str);
+		return (0);
+	}
+	free(str);
+	return (res);
+}
+
 int				read_map(avl_node *tree, avl_tree *root, t_link *link)
 {
 	int			opr;
 //	char		**link_room;
 //	avl_node	*tmp[2];
-	char		*str;
-	get_next_line(STDIN_FILENO, &str);
-	if ((root->ant = ft_atoi(str)) <= 0)
+//	char		*str;
+
+	root->ant = ft_read_ant();
+	if (root->ant <= 0)
 		return (0);
-	free(str);
-	//	tree++;
-	while (get_next_line(STDIN_FILENO, &tree->str))
+	while (get_next_line(STDIN_FILENO, &tree->str) >= 0)
 	{
 		if (!(opr = ft_check_room(tree, root)))
 			return (0);

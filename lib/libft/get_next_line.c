@@ -90,6 +90,8 @@ int					get_next_line(const int fd, char **line)
 	if (!fd_buf[fd])
 		if (!(fd_buf[fd] = ft_strnew(0)))
 			return (-1);
+	if (ft_strchr(fd_buf[fd], '\n'))
+		return (ft_writing(fd_buf, line, fd, 0));
 	if ((ret = ft_read(fd_buf, fd)) < 0)
 	{
 		ft_strdel(&fd_buf[fd]);

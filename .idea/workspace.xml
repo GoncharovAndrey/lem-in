@@ -7,7 +7,25 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b0768a92-0563-4303-a315-d253b5cd4c41" name="Default Changelist" comment="" />
+    <list default="true" id="b0768a92-0563-4303-a315-d253b5cd4c41" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/ft_strnew.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/ft_strnew.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/ft_strsub.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/ft_strsub.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/libft.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/libft.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libftprintf.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libftprintf.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_test.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_big" beforeDir="false" afterPath="$PROJECT_DIR$/map_big" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_check_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_check_map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_free_all.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_free_all.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_print_res.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_print_res.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/read_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/read_map.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +80,7 @@
       <workItem from="1578743238037" duration="27099000" />
       <workItem from="1578840469608" duration="603000" />
       <workItem from="1579029359604" duration="3168000" />
+      <workItem from="1579074855733" duration="8358000" />
     </task>
     <servers />
   </component>
@@ -69,9 +88,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="534" y="267" width="617" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578649492007">
-      <screen x="67" y="27" width="1533" height="873" />
+    <state x="780" y="391" width="617" height="390" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579080406736">
+      <screen x="0" y="23" width="2560" height="1337" />
     </state>
+    <state x="780" y="391" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1337@0.23.2560.1337" timestamp="1579080406736" />
     <state x="534" y="267" width="617" height="390" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1533.873@67.27.1533.873" timestamp="1578649492007" />
     <state x="616" y="220" width="424" height="484" key="FileChooserDialogImpl" timestamp="1578504563197">
       <screen x="67" y="27" width="1533" height="873" />

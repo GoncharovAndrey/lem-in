@@ -39,6 +39,11 @@ int				ft_atoi_max(const char *nptr, int *flag)
 	res = 0;
 	i = 0;
 	z = 1;
+	if (!nptr)
+	{
+		*flag = 0;
+		return (-1);
+	}
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
 	z = nptr[i] == '-' ? -1 : 1;

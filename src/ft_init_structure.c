@@ -40,17 +40,19 @@ int			ft_init_queue(avl_tree *root)
 	return (1);
 }
 
-int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
+void			ft_init_structure(avl_tree **root /*, avl_node **tree, t_link **link*/)
 {
-	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
-		return (0);
-	ft_memset(*tree, 0, sizeof(avl_node) * MAX_ROOM);
-	if (!(*link = (t_link*)malloc(sizeof(t_link) * MAX_LINK)))
-		return (0);
-	ft_memset(*link, 0, sizeof(t_link) * MAX_LINK);
+//	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
+//		return (0);
+//	ft_memset(*tree, 0, sizeof(avl_node) * MAX_ROOM);
+//	if (!(*link = (t_link*)malloc(sizeof(t_link) * MAX_LINK)))
+//		return (0);
+//	ft_memset(*link, 0, sizeof(t_link) * MAX_LINK);
 	if (!(*root = (avl_tree*)malloc(sizeof(avl_tree) * 1)))
-		return (0);
+		ft_close_error();
 	ft_memset((*root), 0, sizeof(avl_tree));
+	if (!((*root)->line = ft_create_add_lstr(NULL)))
+		ft_close_error();
 //	(*root)->short_way = NULL;
 //	(*root)->root = NULL;
 //	(*root)->queue = NULL;
@@ -59,7 +61,7 @@ int			ft_init_structure(avl_tree **root, avl_node **tree, t_link **link)
 //	(*root)->start = NULL;
 //	(*root)->end = NULL;
 //	(*root)->st = 0;
-	return (1);
+//	return (1);
 }
 
 t_ant			*ft_init_ant(avl_tree *root)

@@ -84,19 +84,19 @@ void	ft_close_error(void)
 
 int		main()
 {
-	avl_node	*tree;
+//	avl_node	*tree;
 	avl_tree	*root;
-	t_link		*link;
+//	t_link		*link;
 	t_ways		**ways;
 	t_ant		*ant;
 
-	ft_init_structure(&root,&tree,&link);
-	read_map(tree, root, link);
+	ft_init_structure(&root);
+	read_map(root);
 	ft_init_queue(root);
 	ways = ft_find_ways(root);
 	ft_choose_way(root, ways);
 	ant = ft_ants_on_the_way(root);
-	ft_print_all(root, tree, link, ant);
+	ft_print_all(root, ant);
 	exit(0);
 //	ft_free_all(&root, &tree, &link, &ways, &ant);
 	return 0;

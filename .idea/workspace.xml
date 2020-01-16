@@ -8,29 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0768a92-0563-4303-a315-d253b5cd4c41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/map_super_1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map_super_9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/lem_in.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/lem_in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lem_in" beforeDir="false" afterPath="$PROJECT_DIR$/lem_in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lem_in.dSYM/Contents/Resources/DWARF/lem_in" beforeDir="false" afterPath="$PROJECT_DIR$/lem_in.dSYM/Contents/Resources/DWARF/lem_in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/libft.h" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/libft.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libftprintf.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libftprintf.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map_big" beforeDir="false" afterPath="$PROJECT_DIR$/map_big" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/avl_tree.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/avl_tree.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bfs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/bfs.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ft_check_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_check_map.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_find_ways.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_find_ways.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_print_res.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_print_res.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_init_structure.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_init_structure.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/list.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/list.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/read_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/read_map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +70,8 @@
       <workItem from="1578840469608" duration="603000" />
       <workItem from="1579029359604" duration="3168000" />
       <workItem from="1579074855733" duration="9325000" />
-      <workItem from="1579093388432" duration="10616000" />
+      <workItem from="1579093388432" duration="11020000" />
+      <workItem from="1579159103655" duration="7110000" />
     </task>
     <servers />
   </component>
@@ -118,5 +101,21 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="945" y="328" width="670" height="676" key="search.everywhere.popup/0.23.2560.1337@0.23.2560.1337" timestamp="1579104234842" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/ft_check_map.c</url>
+          <line>77</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/ft_check_map.c</url>
+          <line>93</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

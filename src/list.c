@@ -16,7 +16,8 @@ list_link		*ft_create_list(t_link *data)
 {
 	list_link	*node;
 
-	node = (list_link*)malloc(sizeof(list_link));
+	if (!(node = (list_link*)malloc(sizeof(list_link))))
+		return (NULL);
 	node->data = data;
 	node->next = NULL;
 	return node;
@@ -39,8 +40,53 @@ int				ft_add_list(avl_node *room, t_link *data)
 {
 	list_link	*node;
 
-	node =ft_create_list(data);
+	if (!(node = ft_create_list(data)))
+		ft_close_error();
 	node->next = room->link_room;
 	room->link_room = node;
-	return 1;
+	return (1);
 }
+
+avl_node 		*ft_malloc_avl_node(void)
+{
+	avl_node	*tmp;
+
+	if (!(tmp = (void*)malloc(sizeof(avl_node))))
+		ft_close_error();
+	memset(tmp, 0, sizeof(avl_node));
+//	tmp->name_room = str;
+	return (tmp);
+}
+
+t_link		*ft_malloc_t_link(void)
+{
+	t_link	*tmp;
+
+	if (!(tmp = (void*)malloc(sizeof(t_link))))
+		ft_close_error();
+	memset(tmp, 0, sizeof(t_link));
+	return (tmp);
+}
+
+t_lstr			*ft_create_add_lstr(t_lstr *prev)
+{
+	t_lstr		*new;
+
+	if (!(new = (t_lstr*)malloc(sizeof(t_lstr))))
+		ft_close_error();
+	memset(new, 0, sizeof(t_lstr));
+	if (!prev)
+		return (new);
+	prev->next = new;
+	return (new);
+}
+
+
+
+
+
+
+
+
+
+

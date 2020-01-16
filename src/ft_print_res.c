@@ -38,7 +38,7 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	{
 		y = 0;
 		tmp = ant + 1;
-		printf("\n%d - day\n", i);
+//		printf("\n%d - day\n", i);
 		while (tmp->ant_name)
 		{
 			if (tmp->day == i)
@@ -50,21 +50,23 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	}
 }
 
-void	ft_print_all(avl_tree *root, avl_node *tree, t_link *link, t_ant *ant)
+void	ft_print_all(avl_tree *root, t_ant *ant)
 {
 //	ft_putnbr(root->ant);
 //	write(1, "\n", 1);
+	t_lstr		*tmp;
 
-	while (tree->str)
+	tmp = root->line;
+	while (tmp && tmp->str)
 	{
-		ft_putendl(tree->str);
-		tree++;
+		ft_putendl(tmp->str);
+		tmp = tmp->next;
 	}
-	while (link->str)
-	{
-		ft_putendl(link->str);
-		link++;
-	}
+//	while (link->str)
+//	{
+//		ft_putendl(link->str);
+//		link++;
+//	}
 	write(1, "\n", 1);
 	ft_print_res(ant, root);
 }

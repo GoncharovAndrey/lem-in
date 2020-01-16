@@ -39,33 +39,33 @@ void		ft_free_ways(t_ways ***ways)
 
 void			ft_free_tree(avl_node **tree)
 {
-	avl_node	*tmp;
-
-	if (!tree || !*tree)
-		return ;
-	tmp = *tree;
-	while (tmp && tmp->str)
-	{
-		ft_delete_list(tmp->link_room);
-		ft_free_arr_str(&(tmp->name_room));
-		free(tmp->str);
-		tmp++;
-	}
+//	avl_node	*tmp;
+//
+//	if (!tree || !*tree)
+//		return ;
+//	tmp = *tree;
+//	while (tmp && tmp->str)
+//	{
+//		ft_delete_list(tmp->link_room);
+//		ft_free_arr_str(&(tmp->name_room));
+//		free(tmp->str);
+//		tmp++;
+//	}
 	free(*tree);
 }
 
 void			ft_free_link(t_link **link)
 {
-	t_link		*tmp;
-
-	if (!link || !*link)
-		return ;
-	tmp = *link;
-	while (tmp && tmp->str)
-	{
-		free(tmp->str);
-		tmp++;
-	}
+//	t_link		*tmp;
+//
+//	if (!link || !*link)
+//		return ;
+//	tmp = *link;
+//	while (tmp && tmp->str)
+//	{
+//		free(tmp->str);
+//		tmp++;
+//	}
 	free(*link);
 }
 

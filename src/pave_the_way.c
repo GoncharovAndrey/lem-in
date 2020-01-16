@@ -12,12 +12,12 @@
 
 #include "../includes/lem_in.h"
 
-list_link		*pave_the_way(t_turn *queue)
+t_list_link			*pave_the_way(t_turn *queue)
 {
-	list_link	*tmp;
-	avl_node	*tmp_room;
-	list_link	*ret;
-	list_link	*tmp_list;
+	t_list_link		*tmp;
+	t_avl_node		*tmp_room;
+	t_list_link		*ret;
+	t_list_link		*tmp_list;
 
 	tmp_room = queue->end;
 	ret = NULL;
@@ -26,7 +26,7 @@ list_link		*pave_the_way(t_turn *queue)
 		tmp = tmp_room->link_room;
 		while (tmp->data->status != queue->lvl_lnk || \
 			tmp->data->link_arr[1 - tmp->data->incld_in_way] == tmp_room || \
-				tmp->data->incld_in_way  < 0)
+				tmp->data->incld_in_way < 0)
 			tmp = tmp->next;
 		tmp_list = ft_create_list(tmp->data);
 		tmp_list->next = ret;
@@ -38,12 +38,12 @@ list_link		*pave_the_way(t_turn *queue)
 	return (ret);
 }
 
-list_link		*pave_the_way_finish(t_turn *queue)
+t_list_link			*pave_the_way_finish(t_turn *queue)
 {
-	list_link	*tmp;
-	avl_node	*tmp_room;
-	list_link	*ret;
-	list_link	*tmp_list;
+	t_list_link		*tmp;
+	t_avl_node		*tmp_room;
+	t_list_link		*ret;
+	t_list_link		*tmp_list;
 
 	tmp_room = queue->end;
 	ret = NULL;
@@ -52,7 +52,8 @@ list_link		*pave_the_way_finish(t_turn *queue)
 		tmp = tmp_room->link_room;
 		while (tmp->data->status != queue->lvl_lnk || \
 			tmp->data->link_arr[1 - tmp->data->incld_in_way] == tmp_room || \
-				tmp->data->incld_in_way  < 0 || tmp->data->link_arr[1]->locked == 1)
+				tmp->data->incld_in_way < 0 || \
+					tmp->data->link_arr[1]->locked == 1)
 			tmp = tmp->next;
 		tmp_list = ft_create_list(tmp->data);
 		tmp_list->next = ret;

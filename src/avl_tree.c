@@ -12,13 +12,13 @@
 
 #include "../includes/lem_in.h"
 
-avl_node		***ft_init_tmp(avl_tree *root, avl_node *new_node)
+static t_avl_node	***ft_init_tmp(t_avl_tree *root, t_avl_node *new_node)
 {
-	avl_node	***tmp;
+	t_avl_node		***tmp;
 
-	if (!(tmp = (avl_node ***)malloc(sizeof(avl_node**) * 2)))
+	if (!(tmp = (t_avl_node ***)malloc(sizeof(t_avl_node**) * 2)))
 		return (NULL);
-	if (!(tmp[0] = (avl_node**)malloc(sizeof(avl_node*) * 5)))
+	if (!(tmp[0] = (t_avl_node**)malloc(sizeof(t_avl_node*) * 5)))
 	{
 		free(tmp);
 		return (NULL);
@@ -30,9 +30,9 @@ avl_node		***ft_init_tmp(avl_tree *root, avl_node *new_node)
 	return (tmp);
 }
 
-int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *root)
+static int			ft_srch_insert_pos_avl(t_avl_node ***tmp, t_avl_tree *root)
 {
-	int			dir;
+	int				dir;
 
 	while (tmp[0][3])
 	{
@@ -58,9 +58,9 @@ int				ft_search_insert_pos_avl(avl_node ***tmp, avl_tree *root)
 	return (1);
 }
 
-void			ft_balans_avl(avl_node ***tmp)
+static void			ft_balans_avl(t_avl_node ***tmp)
 {
-	int			dir;
+	int				dir;
 
 	dir = (ft_strcmp(tmp[0][4]->name_room[0], tmp[0][1]->name_room[0]) > 0);
 	tmp[0][0] = tmp[0][1]->link[dir];
@@ -78,15 +78,15 @@ void			ft_balans_avl(avl_node ***tmp)
 		}
 }
 
-void			ft_free_tmp(avl_node ****tmp)
+static void			ft_free_tmp(t_avl_node ****tmp)
 {
 	free(*tmp[0]);
 	free(*tmp);
 }
 
-int				avl_insert(avl_tree *root, avl_node *new_node)
+int					avl_insert(t_avl_tree *root, t_avl_node *new_node)
 {
-	avl_node	***tmp;
+	t_avl_node		***tmp;
 
 	if (!new_node)
 		return (0);
@@ -99,7 +99,7 @@ int				avl_insert(avl_tree *root, avl_node *new_node)
 		ft_free_tmp(&tmp);
 		return (1);
 	}
-	if (!ft_search_insert_pos_avl(tmp, root))
+	if (!ft_srch_insert_pos_avl(tmp, root))
 	{
 		ft_free_tmp(&tmp);
 		return (0);

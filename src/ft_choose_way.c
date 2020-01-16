@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_choose_way.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjosue <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 17:31:26 by cjosue            #+#    #+#             */
+/*   Updated: 2020/01/16 17:31:29 by cjosue           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
-t_ant		*ft_ants_on_the_way(avl_tree *root)
+t_ant			*ft_ants_on_the_way(t_avl_tree *root)
 {
-	t_ant	*ant;
-	int		i;
-	int		sum;
-	int		d;
+	t_ant		*ant;
+	int			i;
+	int			sum;
+	int			d;
 
 	sum = 1;
 	i = 0;
 	d = 1;
 	if (!(ant = ft_init_ant(root)))
-		return (NULL);
+		ft_close_error();
 	while (sum <= root->ant)
 	{
 		if (root->short_way[i].status == 0)
@@ -28,11 +40,11 @@ t_ant		*ft_ants_on_the_way(avl_tree *root)
 	return (ant);
 }
 
-int			ft_enable_activ(avl_tree *root, t_ways *ways)
+static int		ft_enable_activ(t_avl_tree *root, t_ways *ways)
 {
-	int		sum;
-	int		l;
-	int		ind;
+	int			sum;
+	int			l;
+	int			ind;
 
 	sum = 0;
 	l = 0;
@@ -45,7 +57,7 @@ int			ft_enable_activ(avl_tree *root, t_ways *ways)
 		while (ways[l].head && ways[l].status == 1)
 			sum += ways[ind].steps - ways[l++].steps + 1;
 		if (sum == root->ant || !ways[ind + 1].head)
-			break;
+			break ;
 		if (ways[ind].head && sum < root->ant)
 			ways[++ind].status = 1;
 		else
@@ -55,10 +67,10 @@ int			ft_enable_activ(avl_tree *root, t_ways *ways)
 	return (ind);
 }
 
-void		ft_distribution_of_ants(avl_tree *root, t_ways *ways, int ind)
+static void		ft_distribution_of_ants(t_avl_tree *root, t_ways *ways, int ind)
 {
-	int		i;
-	int		kol;
+	int			i;
+	int			kol;
 
 	i = 0;
 	kol = 0;
@@ -84,13 +96,15 @@ void		ft_distribution_of_ants(avl_tree *root, t_ways *ways, int ind)
 	}
 }
 
-int			ft_choose_way(avl_tree *root, t_ways **ways)
+int				ft_choose_way(t_avl_tree *root, t_ways **ways)
 {
-	int		i;
-	int		ind;
+	int			i;
+	int			ind;
 
 	i = 0;
 	ind = 0;
+	if (!(**ways).head)
+		ft_close_error();
 	while (ways[i])
 	{
 		ind = ft_enable_activ(root, ways[i]);

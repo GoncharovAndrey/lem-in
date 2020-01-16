@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free_all.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjosue <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 18:32:14 by cjosue            #+#    #+#             */
+/*   Updated: 2020/01/16 18:32:17 by cjosue           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 void		ft_free_arr_str(char ***str)
 {
-	char **tmp;
+	char	**tmp;
 
 	if (!str || !*str)
 		return ;
@@ -37,48 +49,33 @@ void		ft_free_ways(t_ways ***ways)
 	free(*ways);
 }
 
-void			ft_free_tree(avl_node **tree)
+void		ft_free_lstr(t_lstr *line)
 {
-//	avl_node	*tmp;
-//
-//	if (!tree || !*tree)
-//		return ;
-//	tmp = *tree;
-//	while (tmp && tmp->str)
-//	{
-//		ft_delete_list(tmp->link_room);
-//		ft_free_arr_str(&(tmp->name_room));
-//		free(tmp->str);
-//		tmp++;
-//	}
-	free(*tree);
-}
+	t_lstr	*del;
 
-void			ft_free_link(t_link **link)
-{
-//	t_link		*tmp;
-//
-//	if (!link || !*link)
-//		return ;
-//	tmp = *link;
-//	while (tmp && tmp->str)
-//	{
-//		free(tmp->str);
-//		tmp++;
-//	}
-	free(*link);
-}
-
-	void		ft_free_all(avl_tree **root, avl_node **tree, t_link **link, t_ways ***ways, t_ant **ant)
+	while (line)
 	{
-		ft_free_ways(ways);
-		ft_free_tree(tree);
-		ft_free_link(link);
-		/* проверить на существованеи */
-		free((*root)->queue->turn);
-		free((*root)->queue);
-		free(root[0]);
-		/* !!!!!! */
-		if(ant && *ant)
-			free(*ant);
+		ft_strdel(&line->str);
+		if (line->tree)
+		{
+			ft_free_arr_str(&line->tree->name_room);
+			ft_delete_list(line->tree->link_room);
+			free(line->tree);
+		}
+		if (line->link)
+			free(line->link);
+		del = line;
+		line = line->next;
+		free(del);
 	}
+}
+
+void		ft_free_all(t_avl_tree **root, t_ways ***ways, t_ant **ant)
+{
+	ft_free_lstr((*root)->line);
+	free((*root)->queue->turn);
+	free((*root)->queue);
+	free(root[0]);
+	ft_free_ways(ways);
+	free(*ant);
+}

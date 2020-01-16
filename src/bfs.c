@@ -29,13 +29,12 @@ static void			ft_swap_link_arr(t_turn *queue, t_link *data)
 	data->link_arr[1] = queue->turn[queue->next];
 }
 
-
-static int			ft_check_link_bfs(t_turn *queue, list_link *tmp)
+static int			ft_check_link_bfs(t_turn *queue, t_list_link *tmp)
 {
 	int				i;
 
 	if (tmp->data->link_arr[0] == queue->turn[queue->next] &&
-			tmp->data->status <queue->lvl_rm &&tmp->data->incld_in_way == 0)
+			tmp->data->status < queue->lvl_rm && tmp->data->incld_in_way == 0)
 		ft_swap_link_arr(queue, tmp->data);
 	i = tmp->data->incld_in_way;
 	if (tmp->data->link_arr[i] != queue->end)
@@ -58,12 +57,12 @@ static int			ft_check_link_bfs(t_turn *queue, list_link *tmp)
 	return (0);
 }
 
-int				bfs(t_turn *queue)
+int					bfs(t_turn *queue)
 {
-	list_link	*tmp;
+	t_list_link		*tmp;
 
 	ft_prev_bfs(queue);
-	while(queue->turn[queue->next])
+	while (queue->turn[queue->next])
 	{
 		if ((tmp = queue->turn[queue->next]->link_room))
 		{
@@ -81,63 +80,3 @@ int				bfs(t_turn *queue)
 	}
 	return (0);
 }
-
-//int			bfs(avl_tree *root)
-//{
-//	avl_node	**turn;
-//	size_t		next;
-//	size_t		end;
-//	int			level;
-//	int			stts;
-//	int			i;
-//	list_link	*tmp;
-//
-//	turn = (avl_node**)malloc(sizeof(avl_node*) * root->count +  1);
-//	ft_memset(turn, 0, sizeof(avl_node*) * root->count + 1);
-//	turn[0] = root->start;
-//	root->st++;
-//	stts = root->st;
-//	root->start->level++;
-//	next = 0;
-//	end = 0;
-//	level = root->start->level;
-//	while(turn[next])
-//	{
-//		if ((tmp = turn[next]->link_room))
-//		{
-//			while (tmp)
-//			{
-//				if (tmp->data->incld_in_way > -1)
-//				{
-//					if (tmp->data->link_arr[0] == turn[next] && tmp->data->status < stts &&
-//						tmp->data->incld_in_way == 0)
-//					{
-//						tmp->data->link_arr[0] = tmp->data->link_arr[1];
-//						tmp->data->link_arr[1] = turn[next];
-//					}
-//					i = tmp->data->incld_in_way;
-//					if (tmp->data->link_arr[i] != root->end)
-//					{
-//						if (tmp->data->link_arr[i]->level < turn[next]->level && tmp->data->link_arr[i]->locked != 1)
-//						{
-//							tmp->data->link_arr[i]->level = level;
-//							turn[++end] = tmp->data->link_arr[i];
-//							tmp->data->status = stts;
-//						}
-//					}
-//					else
-//					{
-//						tmp->data->status = stts;
-//						free(turn);
-//						return (1);
-//					}
-//				}
-//				tmp = tmp->next;
-//			}
-//		}
-//		next++;
-//	}
-//	free(turn);
-//	return (0);
-//}
-

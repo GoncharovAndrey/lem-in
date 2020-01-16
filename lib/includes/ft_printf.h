@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <limits.h>
-#include <inttypes.h>
+# include <inttypes.h>
 
 typedef struct			s_printf
 {

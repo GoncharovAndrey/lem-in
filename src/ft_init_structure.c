@@ -1,70 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_structure.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjosue <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 18:30:31 by cjosue            #+#    #+#             */
+/*   Updated: 2020/01/16 18:30:33 by cjosue           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
-t_ways		*ft_init_one_way(avl_tree *root)
+int				ft_init_queue(t_avl_tree *root)
 {
-	t_ways	*ways;
-	int		i;
-
-	i = 0;
-	if (!(ways = (t_ways*)malloc(sizeof(t_ways) * root->out)))
-		return (NULL);
-	while (i < root->out)
-	{
-		ways[i].head = NULL;
-		ways[i].status = 0;
-		ways[i].steps = 0;
-		i++;
-	}
-	return (ways);
-}
-
-int			ft_init_queue(avl_tree *root)
-{
-	t_turn	*tmp;
+	t_turn		*tmp;
 
 	if (!(tmp = (t_turn*)malloc(sizeof(t_turn) * 1)))
 		return (0);
-	if (!(tmp->turn = (avl_node**)malloc(sizeof(avl_node*) * (root->count + 1))))
+	ft_memset(tmp, 0, sizeof(t_turn));
+	if (!(tmp->turn = (t_avl_node**)malloc(sizeof(t_avl_node*) *
+			(root->count + 1))))
 	{
 		free(tmp);
 		return (0);
 	}
 	root->queue = tmp;
-	root->queue->next = 0;
-	root->queue->last = 0;
-	root->queue->lvl_rm = 0;
-	root->queue->lvl_lnk = 0;
 	root->queue->start = root->start;
 	root->queue->end = root->end;
-//	printf ("%s   %s\n", tmp->start->name_room[0], tmp->end->name_room[0]);
 	return (1);
 }
 
-void			ft_init_structure(avl_tree **root /*, avl_node **tree, t_link **link*/)
+void			ft_init_structure(t_avl_tree **root)
 {
-//	if (!(*tree = (avl_node*)malloc(sizeof(avl_node) * MAX_ROOM)))
-//		return (0);
-//	ft_memset(*tree, 0, sizeof(avl_node) * MAX_ROOM);
-//	if (!(*link = (t_link*)malloc(sizeof(t_link) * MAX_LINK)))
-//		return (0);
-//	ft_memset(*link, 0, sizeof(t_link) * MAX_LINK);
-	if (!(*root = (avl_tree*)malloc(sizeof(avl_tree) * 1)))
+	if (!(*root = (t_avl_tree*)malloc(sizeof(t_avl_tree) * 1)))
 		ft_close_error();
-	ft_memset((*root), 0, sizeof(avl_tree));
+	ft_memset((*root), 0, sizeof(t_avl_tree));
 	if (!((*root)->line = ft_create_add_lstr(NULL)))
 		ft_close_error();
-//	(*root)->short_way = NULL;
-//	(*root)->root = NULL;
-//	(*root)->queue = NULL;
-//	(*root)->day = 0;
-//	(*root)->count = 0;
-//	(*root)->start = NULL;
-//	(*root)->end = NULL;
-//	(*root)->st = 0;
-//	return (1);
 }
 
-t_ant			*ft_init_ant(avl_tree *root)
+t_ant			*ft_init_ant(t_avl_tree *root)
 {
 	t_ant		*ant;
 	int			i;

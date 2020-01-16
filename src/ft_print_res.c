@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-void		ft_for_print_res(t_ant *tmp, int *y)
+static	void		ft_for_print_res(t_ant *tmp, int *y)
 {
 	if (*y != 0)
 		write(1, " ", 1);
@@ -27,18 +27,17 @@ void		ft_for_print_res(t_ant *tmp, int *y)
 	(*y)++;
 }
 
-void		ft_print_res(t_ant *ant, avl_tree *root)
+static void			ft_print_res(t_ant *ant, t_avl_tree *root)
 {
-	int		i;
-	int		y;
-	t_ant	*tmp;
+	int				i;
+	int				y;
+	t_ant			*tmp;
 
 	i = 1;
-	while(i <= root->day)
+	while (i <= root->day)
 	{
 		y = 0;
 		tmp = ant + 1;
-//		printf("\n%d - day\n", i);
 		while (tmp->ant_name)
 		{
 			if (tmp->day == i)
@@ -50,11 +49,9 @@ void		ft_print_res(t_ant *ant, avl_tree *root)
 	}
 }
 
-void	ft_print_all(avl_tree *root, t_ant *ant)
+void				ft_print_all(t_avl_tree *root, t_ant *ant)
 {
-//	ft_putnbr(root->ant);
-//	write(1, "\n", 1);
-	t_lstr		*tmp;
+	t_lstr			*tmp;
 
 	tmp = root->line;
 	while (tmp && tmp->str)
@@ -62,11 +59,6 @@ void	ft_print_all(avl_tree *root, t_ant *ant)
 		ft_putendl(tmp->str);
 		tmp = tmp->next;
 	}
-//	while (link->str)
-//	{
-//		ft_putendl(link->str);
-//		link++;
-//	}
 	write(1, "\n", 1);
 	ft_print_res(ant, root);
 }

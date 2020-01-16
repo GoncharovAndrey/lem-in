@@ -12,11 +12,14 @@ SRC_DIR =	./src/
 C_FILE =	avl_rotation.c \
 			avl_tree.c \
 			bfs.c \
+			ft_all_malloc.c \
 			ft_check_map.c \
 			ft_choose_way.c \
 			ft_find_ways.c \
+			ft_for_find_ways.c \
 			ft_free_all.c \
 			ft_init_structure.c \
+			ft_other.c \
 			ft_print_res.c \
 			list.c \
 			main.c \

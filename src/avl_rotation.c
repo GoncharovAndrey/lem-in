@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-void			ft_for_left_rotation(avl_node ***tmp)
+static void			ft_for_left_rotation(t_avl_node ***tmp)
 {
 	*tmp[1] = tmp[0][0]->link[1];
 	tmp[0][3] = *tmp[1];
@@ -38,7 +38,7 @@ void			ft_for_left_rotation(avl_node ***tmp)
 	tmp[0][3]->bal = 0;
 }
 
-void			ft_left_rotation(avl_node ***tmp)
+void				ft_left_rotation(t_avl_node ***tmp)
 {
 	if (tmp[0][1]->bal != -1)
 		tmp[0][1]->bal--;
@@ -54,7 +54,7 @@ void			ft_left_rotation(avl_node ***tmp)
 		ft_for_left_rotation(tmp);
 }
 
-void			ft_for_right_rotation(avl_node ***tmp)
+static void			ft_for_right_rotation(t_avl_node ***tmp)
 {
 	*tmp[1] = tmp[0][0]->link[0];
 	tmp[0][3] = *tmp[1];
@@ -80,7 +80,7 @@ void			ft_for_right_rotation(avl_node ***tmp)
 	tmp[0][3]->bal = 0;
 }
 
-void			ft_right_rotation(avl_node ***tmp)
+void				ft_right_rotation(t_avl_node ***tmp)
 {
 	if (tmp[0][1]->bal != 1)
 		tmp[0][1]->bal++;

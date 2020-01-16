@@ -1,5 +1,6 @@
 416
 #./lem_in < ./maps/greate_map_87  0.47s user 0.22s system 91% cpu 0.757 total 82
+#Here is the number of lines required: 87
 ##start
 Cwl7 4 4
 ##end
@@ -12604,3 +12605,4 @@ Iqe9-Fav5
 Gbd6-Fdl0
 Vgl4-Qvl6
 F_c4-Pge6
+#Here is the number of lines required: 87

@@ -18,8 +18,8 @@ void			ft_parse_flag(char **av, t_avl_tree *root)
 
 	i = 1;
 	if (!av)
-		return;
-	while(av[i])
+		return ;
+	while (av[i])
 	{
 		if (ft_strcmp(av[i], FLAG_FAST) == 0)
 			root->flag[0] = 1;
@@ -29,7 +29,7 @@ void			ft_parse_flag(char **av, t_avl_tree *root)
 	}
 }
 
-int				main(int ac, char** av)
+int				main(int ac, char **av)
 {
 	t_avl_tree	*root;
 	t_ways		**ways;

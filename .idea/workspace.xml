@@ -8,18 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0768a92-0563-4303-a315-d253b5cd4c41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/lem_in.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/lem_in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lem_in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libftprintf.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libftprintf.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maps/map_error" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map_error" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_find_ways.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_find_ways.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_other.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_other.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_print_res.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_print_res.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/read_map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/read_map.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +73,7 @@
       <workItem from="1579249805646" duration="69000" />
       <workItem from="1579249886124" duration="22000" />
       <workItem from="1579249917534" duration="16000" />
-      <workItem from="1579249943079" duration="5481000" />
+      <workItem from="1579249943079" duration="5745000" />
     </task>
     <servers />
   </component>

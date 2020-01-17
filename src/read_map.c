@@ -82,7 +82,8 @@ int					read_map(t_avl_tree *root)
 	prev = root->line;
 	ft_read_ant(root, &prev);
 	ft_read_room(root, &prev);
-	if (!root->start || !root->end || root->end == prev->tree || root->start == prev->tree)
+	if (!root->start || !root->end || root->end == prev->tree ||
+			root->start == prev->tree)
 		ft_close_error();
 	ft_read_link(root, &prev);
 	return (1);

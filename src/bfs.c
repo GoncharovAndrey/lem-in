@@ -34,7 +34,7 @@ static int			ft_check_link_bfs(t_turn *queue, t_list_link *tmp)
 	int				i;
 
 	if (tmp->data->link_arr[0] == queue->turn[queue->next] &&
-			tmp->data->status < queue->lvl_rm && tmp->data->incld_in_way == 0)
+			tmp->data->status < queue->lvl_lnk && tmp->data->incld_in_way == 0)
 		ft_swap_link_arr(queue, tmp->data);
 	i = tmp->data->incld_in_way;
 	if (tmp->data->link_arr[i] != queue->end)

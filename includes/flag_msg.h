@@ -13,7 +13,7 @@
 #ifndef FLAG_MSG_H
 # define FLAG_MSG_H
 
-# define FLAG_FAST "--no-overlapping"
+# define FLAG_FAST "--bfs"
 # define FLAG_DAY "--day"
 
 #endif

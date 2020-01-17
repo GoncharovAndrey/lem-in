@@ -22,7 +22,7 @@ typedef struct			s_avl_node
 	short int			bal;
 	char				**name_room;
 	struct s_list_link	*link_room;
-	int					level;
+	size_t				level;
 	int					locked;
 }						t_avl_node;
 
@@ -45,7 +45,7 @@ typedef struct			s_link
 {
 	t_avl_node			*link_arr[2];
 	int					incld_in_way;
-	int					status;
+	size_t				status;
 }						t_link;
 
 typedef struct			s_list_link
@@ -121,5 +121,6 @@ int						ft_is_number(char *num);
 void					ft_find_out(t_avl_tree *root);
 void					ft_close_error(void);
 t_lstr					*ft_create_add_lstr(t_lstr *prev);
+void					ft_parse_flag(char **av, t_avl_tree *root);
 
 #endif

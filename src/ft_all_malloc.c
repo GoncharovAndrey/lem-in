@@ -35,9 +35,7 @@ t_link			*ft_malloc_t_link(void)
 static t_ways	*ft_init_one_way(size_t size)
 {
 	t_ways		*ways;
-	int			i;
 
-	i = 0;
 	if (!(ways = (t_ways*)malloc(sizeof(t_ways) * size)))
 		ft_close_error();
 	ft_memset(ways, 0, sizeof(t_ways) * size);
@@ -56,25 +54,26 @@ static t_ways	**ft_init_arr_ways(size_t s)
 
 t_ways			**ft_malloc_ways(size_t out, t_ways **ways, size_t s)
 {
-	int			i;
+	size_t		i;
 	t_ways		**tmp;
 
-	i = -1;
+	i = 0;
 	if (!ways)
 	{
 		tmp = ft_init_arr_ways(s);
-		while (++i < s)
-			tmp[i] = ft_init_one_way(out);
+		while (i < s)
+			tmp[i++] = ft_init_one_way(out);
 	}
 	else
 	{
 		tmp = ft_init_arr_ways(s);
-		while (++i < s - 1)
+		while (i < s - 1)
 		{
 			if (ways[i])
 				tmp[i] = ways[i];
 			else
 				tmp[i] = ft_init_one_way(out);
+			i++;
 		}
 		tmp[i] = NULL;
 		free(ways);

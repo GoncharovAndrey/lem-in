@@ -78,3 +78,20 @@ void			ft_close_error(void)
 	ft_putendl_fd("ERROR", 2);
 	exit(EXIT_FAILURE);
 }
+
+void			ft_parse_flag(char **av, t_avl_tree *root)
+{
+	int			i;
+
+	i = 1;
+	if (!av)
+		return ;
+	while (av[i])
+	{
+		if (ft_strcmp(av[i], FLAG_FAST) == 0)
+			root->flag[0] = 1;
+		if ((ft_strcmp(av[i], FLAG_DAY) == 0))
+			root->flag[1] = 1;
+		i++;
+	}
+}

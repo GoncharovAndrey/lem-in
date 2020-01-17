@@ -1,7 +1,7 @@
 NAME_LEM_IN = lem-in
 LIBFT_A = lib/libft/libft.a
 LIBFTPRINTF_A = lib/libftprintf.a
-FLAGS =
+FLAGS = -g -Wall -Wextra -Werror
 COMP = gcc -c -o
 PUSH_SWAP_H = -I includes/
 
@@ -51,7 +51,7 @@ clean:
 		@make -C lib/ clean
 
 fclean: clean
-		@rm -rf ./lem_in
+		@rm -rf ./$(NAME_LEM_IN)
 		@make -C lib/ fclean
 
 re: fclean all

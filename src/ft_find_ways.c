@@ -87,7 +87,15 @@ t_ways				**ft_find_ways(t_avl_tree *root)
 	ft_find_out(root);
 	ways = ft_malloc_ways(root->out, NULL, 2);
 	ft_quike_search(root, ways[0]);
-	ft_off_include_way(ways[0]);
-	ways = ft_suurballe(root, ways);
+	if (root->flag[0] == 0)
+	{
+		ft_off_include_way(ways[0]);
+		ways = ft_suurballe(root, ways);
+	}
+	else
+	{
+		free(ways[1]);
+		ways[1] = NULL;
+	}
 	return (ways);
 }

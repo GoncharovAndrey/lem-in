@@ -38,6 +38,8 @@ static void			ft_print_res(t_ant *ant, t_avl_tree *root)
 	{
 		y = 0;
 		tmp = ant + 1;
+		if (root->flag[1] == 1)
+			ft_printf("Day - %d\n", i);
 		while (tmp->ant_name)
 		{
 			if (tmp->day == i)

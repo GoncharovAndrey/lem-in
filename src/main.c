@@ -12,13 +12,32 @@
 
 #include "../includes/lem_in.h"
 
-int				main(void)
+void			ft_parse_flag(char **av, t_avl_tree *root)
+{
+	int			i;
+
+	i = 1;
+	if (!av)
+		return;
+	while(av[i])
+	{
+		if (ft_strcmp(av[i], FLAG_FAST) == 0)
+			root->flag[0] = 1;
+		if ((ft_strcmp(av[i], FLAG_DAY) == 0))
+			root->flag[1] = 1;
+		i++;
+	}
+}
+
+int				main(int ac, char** av)
 {
 	t_avl_tree	*root;
 	t_ways		**ways;
 	t_ant		*ant;
 
 	ft_init_structure(&root);
+	if (ac > 1)
+		ft_parse_flag(av, root);
 	read_map(root);
 	ft_init_queue(root);
 	ways = ft_find_ways(root);
@@ -26,5 +45,5 @@ int				main(void)
 	ant = ft_ants_on_the_way(root);
 	ft_print_all(root, ant);
 	ft_free_all(&root, &ways, &ant);
-	return (0);
+	return (EXIT_SUCCESS);
 }

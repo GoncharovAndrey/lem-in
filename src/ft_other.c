@@ -75,6 +75,6 @@ t_avl_node		*ft_find_room(char *str, t_avl_node *root)
 
 void			ft_close_error(void)
 {
-	ft_putendl("ERROR");
+	ft_putendl_fd("ERROR", 2);
 	exit(EXIT_FAILURE);
 }

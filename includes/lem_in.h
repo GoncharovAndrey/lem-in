@@ -13,6 +13,7 @@
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # include "../lib/includes/ft_printf.h"
+# include "./flag_msg.h"
 # include <limits.h>
 
 typedef struct			s_avl_node
@@ -37,6 +38,7 @@ typedef struct			s_avl_tree
 	int					day;
 	struct s_turn		*queue;
 	struct s_lstr		*line;
+	int					flag[2];
 }						t_avl_tree;
 
 typedef struct			s_link

@@ -1,8 +1,8 @@
-NAME_LEM_IN = lem_in
+NAME_LEM_IN = lem-in
 LIBFT_A = lib/libft/libft.a
 LIBFTPRINTF_A = lib/libftprintf.a
 FLAGS =
-COMP =		gcc -c -o
+COMP = gcc -c -o
 PUSH_SWAP_H = -I includes/
 
 OBJ_DIR =	./obj/
@@ -36,7 +36,7 @@ all: $(NAME_LEM_IN)
 
 $(NAME_LEM_IN): $(OBJ_DIR) $(OBJ)
 	@make -C lib/
-	@gcc $(LIBFTPRINTF_A) $(OBJ) -o lem_in
+	@gcc $(LIBFTPRINTF_A) $(OBJ) -o $(NAME_LEM_IN)
 	@echo lem_in create
 
 $(OBJ_DIR):

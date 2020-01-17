@@ -36,6 +36,7 @@ static void			ft_read_ant(t_avl_tree *root, t_lstr **prev)
 		}
 		(*prev) = ft_create_add_lstr((*prev));
 	}
+	(*prev)->tree = ft_malloc_avl_node();
 }
 
 static void			ft_read_room(t_avl_tree *root, t_lstr **prev)
@@ -81,6 +82,8 @@ int					read_map(t_avl_tree *root)
 	prev = root->line;
 	ft_read_ant(root, &prev);
 	ft_read_room(root, &prev);
+	if (!root->start || !root->end || root->end == prev->tree || root->start == prev->tree)
+		ft_close_error();
 	ft_read_link(root, &prev);
 	return (1);
 }

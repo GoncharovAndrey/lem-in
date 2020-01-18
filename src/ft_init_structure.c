@@ -45,7 +45,7 @@ t_ant			*ft_init_ant(t_avl_tree *root)
 	t_ant		*ant;
 	int			i;
 
-	i = 0;
+	i = 1;
 	if (!(ant = (t_ant*)malloc(sizeof(t_ant) * (root->ant + 2))))
 		return (NULL);
 	ft_memset(ant, 0, sizeof(t_ant) * (root->ant + 2));
@@ -53,6 +53,15 @@ t_ant			*ft_init_ant(t_avl_tree *root)
 	{
 		ant[i].ant_name = i;
 		i++;
+	}
+	if (root->day == 1)
+	{
+		i = 1;
+		while (i <= root->ant)
+		{
+			ant[i].head = root->short_way->head;
+			ant[i++].day = 1;
+		}
 	}
 	return (ant);
 }

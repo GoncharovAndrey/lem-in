@@ -24,6 +24,8 @@ t_ant			*ft_ants_on_the_way(t_avl_tree *root)
 	d = 1;
 	if (!(ant = ft_init_ant(root)))
 		ft_close_error();
+	if (root->day == 1)
+		return (ant);
 	while (sum <= root->ant)
 	{
 		if (root->short_way[i].status == 0)
@@ -33,8 +35,7 @@ t_ant			*ft_ants_on_the_way(t_avl_tree *root)
 		}
 		ant[sum].head = root->short_way[i].head;
 		root->short_way[i].status--;
-		ant[sum].day = d;
-		sum++;
+		ant[sum++].day = d;
 		i++;
 	}
 	return (ant);
@@ -105,6 +106,12 @@ int				ft_choose_way(t_avl_tree *root, t_ways **ways)
 	ind = 0;
 	if (!(**ways).head)
 		ft_close_error();
+	if (ways[0][0].steps == 1)
+	{
+		root->short_way = ways[0];
+		root->day = 1;
+		return (1);
+	}
 	while (ways[i])
 	{
 		ind = ft_enable_activ(root, ways[i]);

@@ -1,7 +1,7 @@
 NAME_LEM_IN = lem-in
 LIBFT_A = lib/libft/libft.a
 LIBFTPRINTF_A = lib/libftprintf.a
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 COMP = gcc -c -o
 PUSH_SWAP_H = -I includes/
 

@@ -10,16 +10,14 @@
     <list default="true" id="b0768a92-0563-4303-a315-d253b5cd4c41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/flag_msg.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/flag_msg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/lem_in.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/lem_in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lem-in" beforeDir="false" afterPath="$PROJECT_DIR$/lem-in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/libft.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libftprintf.a" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libftprintf.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/map_big" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map_big" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maps/map_error" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map_error" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bfs.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/bfs.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_all_malloc.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_all_malloc.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_for_find_ways.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_for_find_ways.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_other.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_other.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_choose_way.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_choose_way.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_init_structure.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_init_structure.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_print_res.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_print_res.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +43,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/maps" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/maps" />
     </key>
@@ -94,6 +95,9 @@
       <workItem from="1579257213332" duration="130000" />
       <workItem from="1579263854426" duration="5208000" />
       <workItem from="1579272525310" duration="5000" />
+      <workItem from="1579272630058" duration="2779000" />
+      <workItem from="1579275435968" duration="26000" />
+      <workItem from="1579325296305" duration="11523000" />
     </task>
     <servers />
   </component>

@@ -24,6 +24,7 @@ typedef struct			s_avl_node
 	struct s_list_link	*link_room;
 	size_t				level;
 	int					locked;
+	int					x_y[3];
 }						t_avl_node;
 
 typedef struct			s_avl_tree

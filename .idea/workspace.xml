@@ -11,13 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/lem_in.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/lem_in.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/libft/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/lib/libft/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/map_big" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map_big" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/map_error" beforeDir="false" afterPath="$PROJECT_DIR$/maps/map_error" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_choose_way.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_choose_way.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_init_structure.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_init_structure.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ft_print_res.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_print_res.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map_big" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_check_map.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ft_other.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/ft_other.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +94,7 @@
       <workItem from="1579272630058" duration="2779000" />
       <workItem from="1579275435968" duration="26000" />
       <workItem from="1579325296305" duration="11523000" />
+      <workItem from="1579348966467" duration="8163000" />
     </task>
     <servers />
   </component>

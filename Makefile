@@ -13,7 +13,8 @@ C_FILE =	avl_rotation.c \
 			avl_tree.c \
 			bfs.c \
 			ft_all_malloc.c \
-			ft_check_map.c \
+			ft_check_link.c\
+			ft_check_room.c\
 			ft_choose_way.c \
 			ft_find_ways.c \
 			ft_for_find_ways.c \

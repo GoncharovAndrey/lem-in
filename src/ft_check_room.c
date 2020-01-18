@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_check_room.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjosue <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 10:12:14 by cjosue            #+#    #+#             */
-/*   Updated: 2020/01/14 10:12:16 by cjosue           ###   ########.fr       */
+/*   Created: 2020/01/18 18:22:12 by cjosue            #+#    #+#             */
+/*   Updated: 2020/01/18 18:22:14 by cjosue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ static void			ft_for_start_end(t_lstr **prev)
 		}
 		break ;
 	}
-}
-
-int					ft_check_sharp_str(char *str)
-{
-	if (ft_strncmp("#", str, 1) == 0)
-	{
-		if (ft_strncmp("##", str, 2) == 0)
-			ft_close_error();
-		else
-			return (1);
-	}
-	return (7);
 }
 
 static int			ft_check_start_end(t_lstr **prev, t_avl_tree *root)
@@ -66,6 +54,27 @@ static int			ft_check_start_end(t_lstr **prev, t_avl_tree *root)
 	return (0);
 }
 
+static void			ft_for_check_room(char **tmp, t_lstr *head, t_avl_node *tr)
+{
+	int				x;
+	int				y;
+
+	x = ft_atoi_max(tmp[1]);
+	y = ft_atoi_max(tmp[2]);
+	while (head)
+	{
+		if (head->tree)
+			if (head->tree->x_y[0])
+				if (head->tree->x_y[1] == x)
+					if (head->tree->x_y[2] == y)
+						ft_close_error();
+		head = head->next;
+	}
+	tr->x_y[0] = 1;
+	tr->x_y[1] = x;
+	tr->x_y[2] = y;
+}
+
 int					ft_check_room(t_lstr **prev, t_avl_tree *root)
 {
 	char			**tmp;
@@ -84,32 +93,9 @@ int					ft_check_room(t_lstr **prev, t_avl_tree *root)
 		ft_free_arr_str(&tmp);
 		return (2);
 	}
-	ft_atoi_max(tmp[1]);
-	ft_atoi_max(tmp[2]);
 	if (tmp[3])
 		ft_close_error();
+	ft_for_check_room(tmp, root->line, (*prev)->tree);
 	(*prev)->tree->name_room = tmp;
 	return (0);
-}
-
-int					ft_check_link(t_lstr *prev, t_avl_tree *root)
-{
-	char			**tmp_link;
-
-	if (!prev->str || !*(prev->str))
-		ft_close_error();
-	if (ft_check_sharp_str(prev->str) == 1)
-		return (1);
-	if (!(tmp_link = ft_strsplit(prev->str, '-')))
-		ft_close_error();
-	if (!tmp_link[0] || !tmp_link[1] || tmp_link[2])
-		ft_close_error();
-	prev->link->link_arr[0] = ft_find_room(tmp_link[0], root->root);
-	prev->link->link_arr[1] = ft_find_room(tmp_link[1], root->root);
-	if (!prev->link->link_arr[0] || !prev->link->link_arr[1])
-		ft_close_error();
-	ft_add_list(prev->link->link_arr[0], prev->link);
-	ft_add_list(prev->link->link_arr[1], prev->link);
-	ft_free_arr_str(&tmp_link);
-	return (1);
 }
